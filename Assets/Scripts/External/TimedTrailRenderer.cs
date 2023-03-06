@@ -202,8 +202,8 @@ public class TimedTrailRenderer : MonoBehaviour
                     else lineDirection = ((Point)points[i - 1]).position - p.position;
 
                     Vector3 vectorToCamera = touchReactCam.transform.position - p.position;
-                    //  Vector3 perpendicular = Vector3.Cross(lineDirection, vectorToCamera).normalized;
-                    Vector3 perpendicular = Vector3.back;
+                    Vector3 perpendicular = Vector3.Cross(lineDirection, vectorToCamera).normalized;
+                    //Vector3 perpendicular = Vector3.back;
                     newVertices[i * 2] = p.position + (perpendicular * (size * 0.5f));
                     newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.5f));
 
