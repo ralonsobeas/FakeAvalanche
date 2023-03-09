@@ -179,7 +179,6 @@ public class TimedTrailRenderer : MonoBehaviour
                     //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
                     time = time + relativePosition-0.5f;
                     if (relativePosition >= 1 || relativePosition < 0) time = 1;
-                    
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
                     if (colors != null && colors.Length > 0)
@@ -245,5 +244,61 @@ public class TimedTrailRenderer : MonoBehaviour
                 mesh.triangles = newTriangles;
             }
         }
+    }
+
+    public bool getHeight(Vector3 pos,out float y)
+    {
+        y = 0f;
+        if (points.Count < 2) return false;
+
+        float aux = 0f;
+        int index = 0;
+        Vector3 posFix = new Vector3(pos.x, 0, pos.z);
+        Vector3 point1Fix = new Vector3(((Point)points[0]).position.x,0, ((Point)points[0]).position.z);
+        Vector3 point2Fix = new Vector3(((Point)points[1]).position.x, 0, ((Point)points[1]).position.z);
+        float minDistance = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+        for (int i = 1; i < points.Count-1; i++)
+        {
+            point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
+            point2Fix = new Vector3(((Point)points[i+1]).position.x, 0, ((Point)points[i+1]).position.z);
+            aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            if (aux < minDistance)
+            {
+                minDistance = aux;
+                index = i;
+            }
+        }
+
+        if (minDistance > 0.5f) return false;
+        Point p1 = ((Point)points[index]);
+        Point p2 = ((Point)points[index + 1]);
+
+        float aDistance = Vector3.Distance(pos, p1.position);
+        float bDistance = Vector3.Distance(pos, p2.position);
+
+        float time1 = 0;
+        if (!ignorelifeTime) time1 = (Time.time - p1.timeCreated) / lifeTime;
+        float relativePosition1 = p1.position.y - Terrain.activeTerrain.SampleHeight(p1.position);
+        time1 = time1 + relativePosition1 - 0.5f;
+        if (relativePosition1 >= 1 || relativePosition1 < 0) time1 = 1;
+        //print(time1);
+        float time2 = 0;
+        if (!ignorelifeTime) time2 = (Time.time - p2.timeCreated) / lifeTime;
+        float relativePosition2 = p2.position.y - Terrain.activeTerrain.SampleHeight(p2.position);
+        time2 = time2 + relativePosition2 - 0.5f;
+        if (relativePosition2 >= 1 || relativePosition2 < 0) time2 = 1;
+
+        y = Mathf.Lerp(time1, time2, aDistance/(aDistance+bDistance));
+        //y = GetClosestPointOnFiniteLine(pos, ((Point)points[index]).position, ((Point)points[index + 1]).position).y;
+        return true;
+    }
+
+    Vector3 GetClosestPointOnFiniteLine(Vector3 point, Vector3 line_start, Vector3 line_end)
+    {
+        Vector3 line_direction = line_end - line_start;
+        float line_length = line_direction.magnitude;
+        line_direction.Normalize();
+        float project_length = Mathf.Clamp(Vector3.Dot(point - line_start, line_direction), 0f, line_length);
+        return line_start + line_direction * project_length;
     }
 }

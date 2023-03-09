@@ -5,6 +5,12 @@ public class GlobalSnow : MonoBehaviour
     [Range(0.1f, 5f)]
     public float globalSnowAmount = 0.5f;
 
+    public float offsetMultiplier = 0.3f;
+
+    private static GlobalSnow instance;
+
+    public static float GlobalSnowOffset { get { return instance.globalSnowAmount*instance.offsetMultiplier; } }
+
     [Range(0.1f, 5f)]
     public float globalSnowAmountDeep = 0.5f;
 
@@ -17,6 +23,7 @@ public class GlobalSnow : MonoBehaviour
 
     public void Start()
     {
+        instance = this;
         SetValues();
     }
 
