@@ -2,7 +2,7 @@
 
 public class GlobalSnow : MonoBehaviour
 {
-    [Range(0.1f, 1f)]
+    [Range(0.1f, 5f)]
     public float globalSnowAmount = 0.5f;
 
     [Range(0.1f, 1f)]
