@@ -6,6 +6,7 @@ using System.Collections;
 /// </summary>
 public class TimedTrailRenderer : MonoBehaviour
 {
+    public Terrain terrain;
     public Camera touchReactCam;
 
     public bool emit = true;
@@ -174,6 +175,10 @@ public class TimedTrailRenderer : MonoBehaviour
                 {
                     float time = 0;
                     if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
+                    float relativePosition = p.position.y - Terrain.activeTerrain.SampleHeight(p.position);
+                    //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
+                    time = time + relativePosition-0.5f;
+                    if (relativePosition >= 1 || relativePosition < 0) time = 1;
                     
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
