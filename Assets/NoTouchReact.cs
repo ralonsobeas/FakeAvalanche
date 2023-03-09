@@ -16,7 +16,7 @@ public enum TouchReactQuality
 public class NoTouchReact : MonoBehaviour
 {
     public Camera TouchReactCamera;
-    public Camera mainCamera;
+    public GameObject mainCamera;
 
     public TouchReactQuality quality;
     [Range(10,100)]
@@ -40,9 +40,9 @@ public class NoTouchReact : MonoBehaviour
             Vector3 tempCameraPosition = GetCameraPosition();
             var pos = tempCameraPosition;
 
-            pos.x = SnapToPixel(pos.x, TouchReactCamera.targetTexture.width, TouchReactCamera.orthographicSize);
-            pos.y = 0;
-            pos.z = SnapToPixel(pos.z, TouchReactCamera.targetTexture.height, TouchReactCamera.orthographicSize);
+            //pos.x = SnapToPixel(pos.x, TouchReactCamera.targetTexture.width, TouchReactCamera.orthographicSize);
+            //pos.y = SnapToPixel(pos.y, TouchReactCamera.targetTexture.depth, TouchReactCamera.orthographicSize);
+            //pos.z = SnapToPixel(pos.z, TouchReactCamera.targetTexture.height, TouchReactCamera.orthographicSize);
 
             TouchReactCamera.transform.position = pos;
         }
@@ -51,7 +51,7 @@ public class NoTouchReact : MonoBehaviour
 
     private float SnapToPixel(float v, int textureSize, float orthoSize)
     {
-        float worldPixel = orthoSize * 2 / textureSize;
+        float worldPixel = orthoSize  / textureSize;
 
         v = (int)(v / worldPixel);
         v *= worldPixel;
