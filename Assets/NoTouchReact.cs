@@ -16,7 +16,7 @@ public enum TouchReactQuality
 public class NoTouchReact : MonoBehaviour
 {
     public Camera TouchReactCamera;
-    public Camera mainCamera;
+    public GameObject mainCamera;
 
     public TouchReactQuality quality;
     [Range(10,100)]

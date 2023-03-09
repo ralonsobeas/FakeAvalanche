@@ -12,6 +12,7 @@ public class TimedTrailRenderer : MonoBehaviour
 
     public Material material;
 
+    public bool ignorelifeTime;
     public float lifeTime = 1.00f;
 
     public Color[] colors;
@@ -152,7 +153,7 @@ public class TimedTrailRenderer : MonoBehaviour
             foreach (Point p in points)
             {
                 // cull old points first
-                if (Time.time - p.timeCreated > lifeTime) remove.Add(p);
+                if (Time.time - p.timeCreated > lifeTime && !ignorelifeTime) remove.Add(p);
                 i++;
             }
 
@@ -171,7 +172,9 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 foreach (Point p in points)
                 {
-                    float time = (Time.time - p.timeCreated) / lifeTime;
+                    float time = 0;
+                    if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
+                    
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
                     if (colors != null && colors.Length > 0)
@@ -204,8 +207,8 @@ public class TimedTrailRenderer : MonoBehaviour
                     Vector3 vectorToCamera = touchReactCam.transform.position - p.position;
                     Vector3 perpendicular = Vector3.Cross(lineDirection, vectorToCamera).normalized;
                     //Vector3 perpendicular = Vector3.back;
-                    newVertices[i * 2] = p.position + (perpendicular * (size * 0.5f));
-                    newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.5f));
+                    newVertices[i * 2] = p.position + (perpendicular * (size * 0.8f));
+                    newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.8f));
 
                     newColors[i * 2] = newColors[(i * 2) + 1] = color;
 
