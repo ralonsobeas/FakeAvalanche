@@ -99,11 +99,22 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 if (make)
                 {
-                    Point p = new Point();
-                    p.position = transform.position;
-                    p.timeCreated = Time.time;
-                    points.Add(p);
-                    lastPosition = transform.position;
+                    bool isLower = false;
+                    foreach (Point b in points)
+                    {
+                        if (Vector3.Distance(transform.position, b.position) <= 0.2 && transform.position.y < b.position.y)
+                        {
+                            isLower = true;
+                        }
+                    }
+                    if (!isLower)
+                    {
+                        Point p = new Point();
+                        p.position = transform.position;
+                        p.timeCreated = Time.time;
+                        points.Add(p);
+                        lastPosition = transform.position;
+                    }
                 }
                 else
                 {
@@ -177,7 +188,7 @@ public class TimedTrailRenderer : MonoBehaviour
                     if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
                     float relativePosition = p.position.y - Terrain.activeTerrain.SampleHeight(p.position);
                     //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
-                    time = time + relativePosition-0.5f;
+                    time = time + relativePosition;
                     if (relativePosition >= 1 || relativePosition < 0) time = 1;
                     
 
