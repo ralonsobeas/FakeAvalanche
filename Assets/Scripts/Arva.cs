@@ -39,7 +39,7 @@ public class Arva : MonoBehaviour
 
     private void updateArva()
     {
-        arvaNumber.text = ((int)Mathf.Round(Vector3.Magnitude(victimPos.position - playerPos.position))%99999).ToString();
+        arvaNumber.text = ((int)Mathf.Min(Mathf.Round(Vector3.Magnitude(victimPos.position - playerPos.position)),99999)).ToString();
         actualAngle = Vector3.Angle(playerPos.forward, new Vector3(victimPos.position.x, playerPos.position.y, victimPos.position.z) - playerPos.position);
 
         //if (actualAngle < 0) actualAngle = 360f + actualAngle;
