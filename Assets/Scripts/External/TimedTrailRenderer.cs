@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UIElements;
+using System.Linq;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly
@@ -40,6 +43,9 @@ public class TimedTrailRenderer : MonoBehaviour
     private float lastRebuildTime = 0.00f;
     private bool lastFrameEmit = true;
 
+    private int layer_mask;
+    private Mesh mesh;
+
     public class Point
     {
         public float timeCreated = 0.00f;
@@ -59,6 +65,8 @@ public class TimedTrailRenderer : MonoBehaviour
         o.AddComponent(typeof(MeshRenderer));
         o.GetComponent<Renderer>().sharedMaterial = material;
         o.transform.gameObject.layer = LayerMask.NameToLayer("TouchReact");
+        layer_mask = LayerMask.GetMask("TouchReact", "Terain");
+        mesh = (o.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
     }
 
     void OnDisable()
@@ -99,15 +107,38 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 if (make)
                 {
-                    bool isLower = false;
-                    foreach (Point b in points)
+                    bool isNearGround = true;
+                    float relativePosition = this.transform.position.y - Terrain.activeTerrain.SampleHeight(this.transform.position);
+                    if (relativePosition >= 1 || relativePosition < 0) isNearGround = false;
+                    bool isLower = true;
+                    /*float maxDistX = 0.3f;
+                    float maxDistZ = 0.3f;
+                    float minDistanceSqr = 1f;
+                    float lowestRelativeY = Mathf.Infinity;
+                    Vector3 nearestVextex = Vector3.zero;
+                    bool hitAnything = false;
+                    foreach (Vector3 vertex in mesh.vertices)
                     {
-                        if (Vector3.Distance(transform.position, b.position) <= 0.2 && transform.position.y < b.position.y)
+                        if(!((vertex.x + maxDistX > transform.position.x && vertex.x - maxDistX < transform.position.x) && (vertex.z + maxDistZ > transform.position.z && vertex.z - maxDistZ < transform.position.z)))
                         {
-                            isLower = true;
+                            continue;
+                        }
+                        Vector3 diff = transform.position - vertex;
+                        float relativeVertexPosition = vertex.y - Terrain.activeTerrain.SampleHeight(vertex);
+                        float distSqr = diff.sqrMagnitude;
+                        if (distSqr < minDistanceSqr && relativeVertexPosition < lowestRelativeY)
+                        {
+                            hitAnything = true;
+                            //minDistanceSqr = distSqr;
+                            lowestRelativeY = relativeVertexPosition;
+                            nearestVextex = vertex;
                         }
                     }
-                    if (!isLower)
+                    Debug.Log(nearestVextex.y + " " + transform.position.y);
+                    if (lowestRelativeY <= relativePosition) isLower = false;
+                    if (!hitAnything) isLower = true;
+                    */
+                    if (isNearGround && isLower)
                     {
                         Point p = new Point();
                         p.position = transform.position;
@@ -254,6 +285,23 @@ public class TimedTrailRenderer : MonoBehaviour
                 mesh.colors = newColors;
                 mesh.uv = newUV;
                 mesh.triangles = newTriangles;
+                /*var indices = mesh.triangles;
+                var triangleCount = indices.Length / 3;
+                for (var j = 0; j < triangleCount; j++)
+                {
+                    var tmp = indices[j * 3];
+                    indices[j * 3] = indices[j * 3 + 1];
+                    indices[j * 3 + 1] = tmp;
+                }
+                mesh.triangles = indices;
+                // additionally flip the vertex normals to get the correct lighting
+                var normals = mesh.normals;
+                for (var n = 0; n < normals.Length; n++)
+                {
+                    normals[n] = -normals[n];
+                }
+                mesh.normals = normals;
+                */
             }
         }
     }
