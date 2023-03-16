@@ -42,14 +42,7 @@ public class HandPresence : MonoBehaviour
             handAnimator.SetFloat("Flex", 0);
         }
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.indexTouch, out float indexValue))
-        {
-            handAnimator.SetFloat("Pose", indexValue);
-        }
-        else
-        {
-            handAnimator.SetFloat("Pose", 0);
-        }
+
     }
 
     // Update is called once per frame
