@@ -40,6 +40,8 @@ public class TimedTrailRenderer : MonoBehaviour
     private float lastRebuildTime = 0.00f;
     private bool lastFrameEmit = true;
 
+    [SerializeField] private bool isPhysics = true;
+
     public class Point
     {
         public float timeCreated = 0.00f;
@@ -248,7 +250,8 @@ public class TimedTrailRenderer : MonoBehaviour
 
     public bool getHeight(Vector3 pos,out float y)
     {
-        y = 0f;
+        y = 1f;
+        if (!isPhysics) return false;
         if (points.Count < 2) return false;
 
         float aux = 0f;

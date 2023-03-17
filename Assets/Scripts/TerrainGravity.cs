@@ -21,19 +21,18 @@ public class TerrainGravity : MonoBehaviour
 
     float getHeight()
     {
-        int i = 0;
         float y = 0;
         bool hasTrail = false;
+        float minHeight = 0f;
 
-        while(i < trails.Length)
+        for(int i = 0; i < trails.Length; i++)
         {
             hasTrail = trails[i].getHeight(transform.position, out y);
-            if (hasTrail)
-                break;
-
-            i++;
+            if (hasTrail && minHeight > y)
+                minHeight = y;
         }
-        print((1 - y));
-        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (1 - y): Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset;
+
+        print((y));
+        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y): Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset;
     }
 }

@@ -163,12 +163,12 @@ Shader "MyTerrain/BumpTerrainHeightBlend"
 						_terrainDispMap += mult * splat_control.g * UNITY_SAMPLE_TEX2DARRAY_LOD(_Array2, float3(uv / float2(_TileSizeArray[1].x, _TileSizeArray[1].y) + float2(_TileSizeArray[1].z, _TileSizeArray[1].w), 0), 3).r * _BumpScaleArray[1];
 						_terrainDispMap += mult * splat_control.b * UNITY_SAMPLE_TEX2DARRAY_SAMPLER_LOD(_Array3, _Array2, float3(uv / float2(_TileSizeArray[2].x, _TileSizeArray[2].y) + float2(_TileSizeArray[2].z, _TileSizeArray[2].w), 0), 3).r * _BumpScaleArray[2];
 						_terrainDispMap += mult * splat_control.a * UNITY_SAMPLE_TEX2DARRAY_SAMPLER_LOD(_Array4, _Array2, float3(uv / float2(_TileSizeArray[3].x, _TileSizeArray[3].y) + float2(_TileSizeArray[3].z, _TileSizeArray[3].w), 0), 3).r * _BumpScaleArray[3];
-
+						float3 up = float3(0,1,0);
 						if (_terrainDispMap > _snowDispMap) {
-							v.vertex.xyz += v.normal * _terrainDispMap;
+							v.vertex.xyz += up * _terrainDispMap;
 						}
 						else {
-							v.vertex.xyz += v.normal * _snowDispMap;
+							v.vertex.xyz += up * _snowDispMap;
 						}
 
 						v.color = float4 (_snowDispMap, _terrainDispMap, 0, 0);
