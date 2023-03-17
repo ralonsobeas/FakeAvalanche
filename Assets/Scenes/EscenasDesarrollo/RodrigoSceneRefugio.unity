@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0ff3aa777f2ccae4dbada9366130d56b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028435, g: 0.22571555, b: 0.3069234, a: 1}
+  m_IndirectSpecularColor: {r: 0.24539863, g: 0.3462945, b: 0.4703009, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4466,7 +4466,7 @@ MonoBehaviour:
     y necesitamos la ayuda de expertos en rescate de avalanchas como usted para poder
     salvar la vida del esquiador. Le pedimos que acuda al lugar de la avalancha lo
     antes posible, equipado con los materiales y herramientas necesarios para llevar
-    a cabo la tarea de rescate:\n\n\t- ARVA iniciaci\xF3n.\n\t- Pala\n\r\nEl lugar
+    a cabo la tarea de rescate:\n\n\t- ARVA iniciaci\xF3n.\n\t- Pala.\n\r\nEl lugar
     de la avalancha se encuentra en la zona de esqu\xED de Formigal, cerca de la
     pista \"El Infierno\". Les proporcionar\xE9 m\xE1s informaci\xF3n sobre la ubicaci\xF3n
     exacta y las condiciones de la avalancha tan pronto como me sea posible.\r\n\r\nLes
