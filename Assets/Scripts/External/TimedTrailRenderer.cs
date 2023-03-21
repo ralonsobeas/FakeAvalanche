@@ -1,17 +1,22 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UIElements;
+using System.Linq;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly
 /// </summary>
 public class TimedTrailRenderer : MonoBehaviour
 {
+    public Terrain terrain;
     public Camera touchReactCam;
 
     public bool emit = true;
 
     public Material material;
 
+    public bool ignorelifeTime;
     public float lifeTime = 1.00f;
 
     public Color[] colors;
@@ -38,6 +43,9 @@ public class TimedTrailRenderer : MonoBehaviour
     private float lastRebuildTime = 0.00f;
     private bool lastFrameEmit = true;
 
+    private int layer_mask;
+    private Mesh mesh;
+
     public class Point
     {
         public float timeCreated = 0.00f;
@@ -57,6 +65,8 @@ public class TimedTrailRenderer : MonoBehaviour
         o.AddComponent(typeof(MeshRenderer));
         o.GetComponent<Renderer>().sharedMaterial = material;
         o.transform.gameObject.layer = LayerMask.NameToLayer("TouchReact");
+        layer_mask = LayerMask.GetMask("TouchReact", "Terain");
+        mesh = (o.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
     }
 
     void OnDisable()
@@ -97,11 +107,45 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 if (make)
                 {
-                    Point p = new Point();
-                    p.position = transform.position;
-                    p.timeCreated = Time.time;
-                    points.Add(p);
-                    lastPosition = transform.position;
+                    bool isNearGround = true;
+                    float relativePosition = this.transform.position.y - Terrain.activeTerrain.SampleHeight(this.transform.position);
+                    if (relativePosition >= 1 || relativePosition < 0) isNearGround = false;
+                    bool isLower = true;
+                    /*float maxDistX = 0.3f;
+                    float maxDistZ = 0.3f;
+                    float minDistanceSqr = 1f;
+                    float lowestRelativeY = Mathf.Infinity;
+                    Vector3 nearestVextex = Vector3.zero;
+                    bool hitAnything = false;
+                    foreach (Vector3 vertex in mesh.vertices)
+                    {
+                        if(!((vertex.x + maxDistX > transform.position.x && vertex.x - maxDistX < transform.position.x) && (vertex.z + maxDistZ > transform.position.z && vertex.z - maxDistZ < transform.position.z)))
+                        {
+                            continue;
+                        }
+                        Vector3 diff = transform.position - vertex;
+                        float relativeVertexPosition = vertex.y - Terrain.activeTerrain.SampleHeight(vertex);
+                        float distSqr = diff.sqrMagnitude;
+                        if (distSqr < minDistanceSqr && relativeVertexPosition < lowestRelativeY)
+                        {
+                            hitAnything = true;
+                            //minDistanceSqr = distSqr;
+                            lowestRelativeY = relativeVertexPosition;
+                            nearestVextex = vertex;
+                        }
+                    }
+                    Debug.Log(nearestVextex.y + " " + transform.position.y);
+                    if (lowestRelativeY <= relativePosition) isLower = false;
+                    if (!hitAnything) isLower = true;
+                    */
+                    if (isNearGround && isLower)
+                    {
+                        Point p = new Point();
+                        p.position = transform.position;
+                        p.timeCreated = Time.time;
+                        points.Add(p);
+                        lastPosition = transform.position;
+                    }
                 }
                 else
                 {
@@ -152,7 +196,7 @@ public class TimedTrailRenderer : MonoBehaviour
             foreach (Point p in points)
             {
                 // cull old points first
-                if (Time.time - p.timeCreated > lifeTime) remove.Add(p);
+                if (Time.time - p.timeCreated > lifeTime && !ignorelifeTime) remove.Add(p);
                 i++;
             }
 
@@ -171,7 +215,13 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 foreach (Point p in points)
                 {
-                    float time = (Time.time - p.timeCreated) / lifeTime;
+                    float time = 0;
+                    if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
+                    float relativePosition = p.position.y - Terrain.activeTerrain.SampleHeight(p.position);
+                    //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
+                    time = time + relativePosition;
+                    if (relativePosition >= 1 || relativePosition < 0) time = 1;
+                    
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
                     if (colors != null && colors.Length > 0)
@@ -202,10 +252,10 @@ public class TimedTrailRenderer : MonoBehaviour
                     else lineDirection = ((Point)points[i - 1]).position - p.position;
 
                     Vector3 vectorToCamera = touchReactCam.transform.position - p.position;
-                    //  Vector3 perpendicular = Vector3.Cross(lineDirection, vectorToCamera).normalized;
-                    Vector3 perpendicular = Vector3.back;
-                    newVertices[i * 2] = p.position + (perpendicular * (size * 0.5f));
-                    newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.5f));
+                    Vector3 perpendicular = Vector3.Cross(lineDirection, vectorToCamera).normalized;
+                    //Vector3 perpendicular = Vector3.back;
+                    newVertices[i * 2] = p.position + (perpendicular * (size * 0.8f));
+                    newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.8f));
 
                     newColors[i * 2] = newColors[(i * 2) + 1] = color;
 
@@ -235,6 +285,23 @@ public class TimedTrailRenderer : MonoBehaviour
                 mesh.colors = newColors;
                 mesh.uv = newUV;
                 mesh.triangles = newTriangles;
+                /*var indices = mesh.triangles;
+                var triangleCount = indices.Length / 3;
+                for (var j = 0; j < triangleCount; j++)
+                {
+                    var tmp = indices[j * 3];
+                    indices[j * 3] = indices[j * 3 + 1];
+                    indices[j * 3 + 1] = tmp;
+                }
+                mesh.triangles = indices;
+                // additionally flip the vertex normals to get the correct lighting
+                var normals = mesh.normals;
+                for (var n = 0; n < normals.Length; n++)
+                {
+                    normals[n] = -normals[n];
+                }
+                mesh.normals = normals;
+                */
             }
         }
     }
