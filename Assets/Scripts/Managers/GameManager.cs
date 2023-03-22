@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class GameManager : Singleton
     {
         OnGameStart();
     }
-
+   
     public void DecreaseLife()
     {
         OnDecreaseLife();
