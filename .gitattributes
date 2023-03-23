@@ -1,6 +1,0 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-Assets/Resources/CustomTerrainShaderTextures/Snow_Array.asset filter=lfs diff=lfs merge=lfs -text
-Assets/Resources/CustomTerrainShaderTextures/Rocks012_Array.asset filter=lfs diff=lfs merge=lfs -text
-Assets/Resources/CustomTerrainShaderTextures/Rocks001_Array.asset filter=lfs diff=lfs merge=lfs -text
-Assets/Resources/CustomTerrainShaderTextures/Test_Array.asset filter=lfs diff=lfs merge=lfs -text
