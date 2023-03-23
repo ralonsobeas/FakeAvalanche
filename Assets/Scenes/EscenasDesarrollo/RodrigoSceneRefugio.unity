@@ -6323,7 +6323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba90251dd3d96f4ab7515e1fa14fb7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  sceneName: Loading
 --- !u!65 &1556883874
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11718,6 +11718,7 @@ GameObject:
   - component: {fileID: 5843497293274500196}
   - component: {fileID: 5843497293274500195}
   - component: {fileID: 5843497293274500200}
+  - component: {fileID: 5843497293274500201}
   m_Layer: 8
   m_Name: XRRig
   m_TagString: Untagged
@@ -11830,7 +11831,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.06
+  m_Height: 0.9
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -11868,6 +11869,21 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5843497293274500201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5843497293274500194}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocomotionProvider: {fileID: 5843497293274500196}
+  m_MinHeight: 3
+  m_MaxHeight: Infinity
 --- !u!1 &5876970070380235764
 GameObject:
   m_ObjectHideFlags: 0
