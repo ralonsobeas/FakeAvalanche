@@ -5515,6 +5515,7 @@ GameObject:
   - component: {fileID: 2307929783583215319}
   - component: {fileID: 2307929783583215324}
   - component: {fileID: 2307929783583215325}
+  - component: {fileID: -2363590728665134035}
   m_Layer: 8
   m_Name: XRRig
   m_TagString: Untagged
@@ -5603,7 +5604,7 @@ MonoBehaviour:
   m_System: {fileID: 2307929783583215313}
   m_MoveSpeed: 1
   m_EnableStrafe: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_GravityApplicationMode: 0
   m_ForwardSource: {fileID: 4105469133865374566}
   m_LeftHandMoveAction:
@@ -5697,6 +5698,19 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 2307929783583215312}
   m_MinHeight: 3
   m_MaxHeight: Infinity
+--- !u!114 &-2363590728665134035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307929783583215318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c442a64f90a9145b02196cb559d6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeMultiplier: 100
 --- !u!1 &2346407423868995904
 GameObject:
   m_ObjectHideFlags: 0
