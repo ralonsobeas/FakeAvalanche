@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class Arva : MonoBehaviour
 {
-    private Transform playerPos;
+    protected Transform playerPos;
 
     [SerializeField]
-    private Transform victimPos;
+    protected Transform victimPos;
 
     [SerializeField]
     private Text arvaNumber;
@@ -22,7 +22,7 @@ public class Arva : MonoBehaviour
     [SerializeField]
     private Sprite[] arrows;
 
-    private bool power = true;
+    protected bool power = true;
     private float actualAngle;
 
     private void Start()
@@ -37,7 +37,7 @@ public class Arva : MonoBehaviour
         if (power) updateArva();
     }
 
-    private void updateArva()
+    protected void updateArva()
     {
         arvaNumber.text = ((int)Mathf.Min(Mathf.Round(Vector3.Magnitude(victimPos.position - playerPos.position)),99999)).ToString();
         actualAngle = Vector3.SignedAngle(playerPos.forward, new Vector3(victimPos.position.x, playerPos.position.y, victimPos.position.z) - playerPos.position, playerPos.forward);
