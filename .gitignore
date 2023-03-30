@@ -70,3 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Git ignore LFS
+/Assets/Resources/CustomTerrainShaderTextures/Snow_Array.asset
+/Assets/Resources/CustomTerrainShaderTextures/Rocks012_Array.asset
+/Assets/Resources/CustomTerrainShaderTextures/Rocks001_Array.asset
+/Assets/Resources/CustomTerrainShaderTextures/Test_Array.asset
