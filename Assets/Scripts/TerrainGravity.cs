@@ -16,7 +16,7 @@ public class TerrainGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x,getHeight(),transform.position.z);
+        transform.position = new Vector3(transform.position.x, getHeight(), transform.position.z);
     }
 
     float getHeight()
@@ -25,7 +25,7 @@ public class TerrainGravity : MonoBehaviour
         bool hasTrail = false;
         float minHeight = 0f;
 
-        for(int i = 0; i < trails.Length; i++)
+        for (int i = 0; i < trails.Length; i++)
         {
             hasTrail = trails[i].getHeight(transform.position, out y);
             if (hasTrail && minHeight > y)
@@ -33,6 +33,6 @@ public class TerrainGravity : MonoBehaviour
         }
 
         print((y));
-        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y): Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset;
+        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset;
     }
 }

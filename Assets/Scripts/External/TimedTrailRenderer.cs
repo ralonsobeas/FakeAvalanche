@@ -1,5 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using UnityEngine.UIElements;
+using System.Linq;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly
@@ -40,7 +44,11 @@ public class TimedTrailRenderer : MonoBehaviour
     private float lastRebuildTime = 0.00f;
     private bool lastFrameEmit = true;
 
-    [SerializeField] private bool isPhysics = true;
+    private int layer_mask;
+    private Mesh mesh;
+
+    [SerializeField]
+    private bool isPhysics = true;
 
     public class Point
     {
@@ -61,6 +69,8 @@ public class TimedTrailRenderer : MonoBehaviour
         o.AddComponent(typeof(MeshRenderer));
         o.GetComponent<Renderer>().sharedMaterial = material;
         o.transform.gameObject.layer = LayerMask.NameToLayer("TouchReact");
+        layer_mask = LayerMask.GetMask("TouchReact", "Terain");
+        mesh = (o.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
     }
 
     void OnDisable()
@@ -101,11 +111,17 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 if (make)
                 {
-                    Point p = new Point();
-                    p.position = transform.position;
-                    p.timeCreated = Time.time;
-                    points.Add(p);
-                    lastPosition = transform.position;
+                    bool isNearGround = true;
+                    //float relativePosition = this.transform.position.y - Terrain.activeTerrain.SampleHeight(this.transform.position);
+                    //if (relativePosition >= 1 || relativePosition < 0) isNearGround = false;
+                    if (isNearGround)
+                    {
+                        Point p = new Point();
+                        p.position = transform.position;
+                        p.timeCreated = Time.time;
+                        points.Add(p);
+                        lastPosition = transform.position;
+                    }
                 }
                 else
                 {
@@ -175,12 +191,9 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 foreach (Point p in points)
                 {
-                    float time = 0;
-                    if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
-                    float relativePosition = p.position.y - Terrain.activeTerrain.SampleHeight(p.position);
+                    float time = getTime(p);
                     //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
-                    time = time + relativePosition-0.5f;
-                    if (relativePosition >= 1 || relativePosition < 0) time = 1;
+                    
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
                     if (colors != null && colors.Length > 0)
@@ -244,50 +257,28 @@ public class TimedTrailRenderer : MonoBehaviour
                 mesh.colors = newColors;
                 mesh.uv = newUV;
                 mesh.triangles = newTriangles;
-            }
-        }
-    }
-
-    public bool getHeightv2(Vector3 pos,out float y)
-    {
-        y = 1f;
-        if (!isPhysics) return false;
-        if (points.Count < 2) return false;
-
-        Vector3 posFix = new Vector3(pos.x, 0, pos.z);
-        bool ok = false;
-        float sumatorioHeights = 0f;
-        print("PATATAS");
-        for (int i = 0; i < points.Count-1; i++)
-        {
-            Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
-            Vector3 point2Fix = new Vector3(((Point)points[i+1]).position.x, 0, ((Point)points[i+1]).position.z);
-            float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
-            if (aux < 0.5f)
-            {
-                float aDistance = Vector3.Distance(pos, point1Fix);
-                float bDistance = Vector3.Distance(pos, point2Fix);
-                bool seSuma, seSuma2;
-                float time1 = (1f-getTime((Point)points[i],out seSuma));
-                float time2 = (1f-getTime((Point)points[i+1],out seSuma2));
-                float aux2 = Mathf.Lerp(time1, time2, aDistance / (aDistance + bDistance));
-                
-                if (seSuma || seSuma2)
+                /*var indices = mesh.triangles;
+                var triangleCount = indices.Length / 3;
+                for (var j = 0; j < triangleCount; j++)
                 {
-                    print(aux2);
-                    sumatorioHeights += aux2;
+                    var tmp = indices[j * 3];
+                    indices[j * 3] = indices[j * 3 + 1];
+                    indices[j * 3 + 1] = tmp;
                 }
-                ok = true;
+                mesh.triangles = indices;
+                // additionally flip the vertex normals to get the correct lighting
+                var normals = mesh.normals;
+                for (var n = 0; n < normals.Length; n++)
+                {
+                    normals[n] = -normals[n];
+                }
+                mesh.normals = normals;
+                */
             }
         }
-        sumatorioHeights = 1f - sumatorioHeights;
-        y = sumatorioHeights > 0f ? sumatorioHeights : 0f;
-        if (y > 1f)
-            y = 1f;
-        print("ASADAS");
-        return ok;
     }
-    public bool getHeight(Vector3 pos,out float y)
+
+    public bool getHeight(Vector3 pos, out float y)
     {
         y = 1f;
         if (!isPhysics) return false;
@@ -296,24 +287,24 @@ public class TimedTrailRenderer : MonoBehaviour
         Vector3 posFix = new Vector3(pos.x, 0, pos.z);
         bool ok = false;
         float minHeight = 0f;
-        print("PATATAS");
-        for (int i = 0; i < points.Count-1; i++)
+        //print("PATATAS");
+        for (int i = 0; i < points.Count - 1; i++)
         {
             Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
-            Vector3 point2Fix = new Vector3(((Point)points[i+1]).position.x, 0, ((Point)points[i+1]).position.z);
+            Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
             float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
             if (aux < 0.5f)
             {
                 float aDistance = Vector3.Distance(pos, point1Fix);
                 float bDistance = Vector3.Distance(pos, point2Fix);
                 bool seSuma, seSuma2;
-                float time1 = (1f-getTime((Point)points[i],out seSuma));
-                float time2 = (1f-getTime((Point)points[i+1],out seSuma2));
+                float time1 = (1f - getTime((Point)points[i], out seSuma));
+                float time2 = (1f - getTime((Point)points[i + 1], out seSuma2));
                 float aux2 = Mathf.Lerp(time1, time2, aDistance / (aDistance + bDistance));
-                
+
                 if (seSuma || seSuma2)
                 {
-                    print(aux2);
+                    //print(aux2);
                     minHeight = aux2;
                 }
                 ok = true;
@@ -323,7 +314,46 @@ public class TimedTrailRenderer : MonoBehaviour
         y = minHeight > 0f ? minHeight : 0f;
         if (y > 1f)
             y = 1f;
-        print("ASADAS");
+        //print("ASADAS");
+        return ok;
+    }
+
+    public bool getHeightV2(Vector3 pos, out float y)
+    {
+        y = 1f;
+        if (!isPhysics) return false;
+        if (points.Count < 2) return false;
+
+        Vector3 posFix = new Vector3(pos.x, 0, pos.z);
+        bool ok = false;
+        float sumatorioHeights = 0f;
+
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
+            Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
+            float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            if (aux < 0.5f)
+            {
+                float aDistance = Vector3.Distance(pos, point1Fix);
+                float bDistance = Vector3.Distance(pos, point2Fix);
+                bool seSuma, seSuma2;
+                float time1 = 1f - getTime((Point)points[i], out seSuma);
+                float time2 = 1f - getTime((Point)points[i + 1], out seSuma2);
+                float aux2 = Mathf.Lerp(time1, time2, aDistance / (aDistance + bDistance));
+                if (seSuma || seSuma2)
+                {
+                    sumatorioHeights += aux2;
+                    ok = true;
+                }
+            }
+        }
+        sumatorioHeights = 1f - sumatorioHeights;
+        y = sumatorioHeights > 0f ? sumatorioHeights : 0f;
+        if(y > 1f)
+        {
+            y = 1f;
+        }
         return ok;
     }
 
@@ -332,21 +362,26 @@ public class TimedTrailRenderer : MonoBehaviour
         float time = 0;
         if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
         float relativePosition = point.position.y - Terrain.activeTerrain.SampleHeight(point.position);
-        time += relativePosition - 0.5f;
-        if (relativePosition >= 1 || relativePosition < 0) time = 1;
+        time += relativePosition;
+        if (relativePosition >= 2) time = 1;
+        if (relativePosition < 0) if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
         return time;
     }
-    float getTime(Point point,out bool ok)
+    float getTime(Point point, out bool ok)
     {
         ok = true;
         float time = 0;
         if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
         float relativePosition = point.position.y - Terrain.activeTerrain.SampleHeight(point.position);
-        time += relativePosition - 0.5f;
-        if (relativePosition >= 1 || relativePosition < 0)
+        time += relativePosition;
+        if (relativePosition >= 2)
         {
             ok = false;
             time = 1;
+        }
+        if(relativePosition < 0)
+        {
+            if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
         }
         return time;
     }
