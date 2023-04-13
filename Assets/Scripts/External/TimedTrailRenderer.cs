@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UIElements;
 using System.Linq;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+//using UnityEditorInternal.Profiling.Memory.Experimental;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly

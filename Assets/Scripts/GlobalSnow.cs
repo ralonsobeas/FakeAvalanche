@@ -17,14 +17,6 @@ public class GlobalSnow : MonoBehaviour
     [Range(0.1f, 1f)]
     public float snowBlendStrength;
 
-
-    public float offsetMultiplier = 1f;
-
-    private static GlobalSnow instance;
-
-    public static float GlobalSnowOffset { get { return instance.globalSnowAmount * instance.offsetMultiplier; } }
-
-
     public Color snowColorUpper;
     public Color snowColorBottom;
 
