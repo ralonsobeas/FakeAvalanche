@@ -287,7 +287,6 @@ public class TimedTrailRenderer : MonoBehaviour
         Vector3 posFix = new Vector3(pos.x, 0, pos.z);
         bool ok = false;
         float minHeight = 0f;
-        //print("PATATAS");
         for (int i = 0; i < points.Count - 1; i++)
         {
             Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
@@ -305,7 +304,8 @@ public class TimedTrailRenderer : MonoBehaviour
                 if (seSuma || seSuma2)
                 {
                     //print(aux2);
-                    minHeight = aux2;
+                    if(minHeight < aux)
+                        minHeight = aux2;
                 }
                 ok = true;
             }
@@ -314,7 +314,6 @@ public class TimedTrailRenderer : MonoBehaviour
         y = minHeight > 0f ? minHeight : 0f;
         if (y > 1f)
             y = 1f;
-        //print("ASADAS");
         return ok;
     }
 

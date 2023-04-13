@@ -10,6 +10,7 @@ public class TerrainGravity : MonoBehaviour
 
     public int imageSize = 1024;
     public int terrainSize = 128;
+    public float characterOffset = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,6 @@ public class TerrainGravity : MonoBehaviour
             }
         redAddition /= 9;
 
-        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition;
+        return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition + characterOffset : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition + characterOffset;
     }
 }
