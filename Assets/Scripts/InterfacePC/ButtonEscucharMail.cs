@@ -24,7 +24,7 @@ public class ButtonEscucharMail : MonoBehaviour
         }
         else
         {
-            changeBgColor(Color.white);
+            changeBgColor(Color.black);
 
         }
     }
@@ -44,7 +44,7 @@ public class ButtonEscucharMail : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
         
-            changeBgColor(Color.white);
+            changeBgColor(Color.black);
 
 
         }
@@ -55,9 +55,10 @@ public class ButtonEscucharMail : MonoBehaviour
      */
     private void changeBgColor(Color color)
     {
-        var colors = GetComponent<Button>().colors;
-        colors.normalColor = color;
-        GetComponent<Button>().colors = colors;
+        Debug.Log("BOTON");
+        //var colors = GetComponent<Image>().color;
+        //colors.normalColor = color;
+        GetComponent<Image>().color = color;
     }
 
 
