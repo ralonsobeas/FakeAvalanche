@@ -7,6 +7,9 @@ public class ArvaIntermidiate : Arva
     [SerializeField]
     private GameObject[] arvaDepth;
 
+    [SerializeField]
+    private float depthStep = 1;
+
     private void Update()
     {
         if (power)
@@ -18,7 +21,7 @@ public class ArvaIntermidiate : Arva
 
     private void updateDepth()
     {
-        float depth = ((int)Mathf.Round(Mathf.Abs(playerPos.position.y - victimPos.position.y)/3));
+        float depth = ((int)Mathf.Round(Mathf.Abs(playerPos.position.y - victimPos.position.y)/depthStep));
 
         for(int i=0;i < arvaDepth.Length; ++i)
         {
