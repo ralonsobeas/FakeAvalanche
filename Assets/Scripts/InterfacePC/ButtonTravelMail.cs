@@ -60,7 +60,7 @@ public class ButtonTravelMail : MonoBehaviour
         // a sceneBuildIndex of 1 as shown in Build Settings.
         OnLoadEvent.OnLoad();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-
+        
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
