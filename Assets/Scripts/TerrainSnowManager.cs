@@ -82,7 +82,7 @@ public class TerrainSnowManager : MonoBehaviour
             }
             customTerrains.Add(terrainTracks);
 
-            terrainTracks.Reload(terrainShader, customTextures, new Vector3(tesselation, MinTesDist, MaxTesDist)); ;
+            terrainTracks.Reload(terrainShader, customTextures, new Vector3(tesselation, MinTesDist, MaxTesDist));
         }
     }
 

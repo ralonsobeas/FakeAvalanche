@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Cloud_Mat.mat.meta
 guid: 8ed49421d75b217469ba9a99419640de
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+========
+guid: 339f9703272330d4491159e57f25b73e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+>>>>>>>> JoseLuis:Assets/New Terrain 1.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
