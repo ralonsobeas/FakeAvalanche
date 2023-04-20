@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UIElements;
 using System.Linq;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+//using UnityEditorInternal.Profiling.Memory.Experimental;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly
@@ -292,7 +292,8 @@ public class TimedTrailRenderer : MonoBehaviour
         {
             Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
             Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
-            float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            //float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            float aux = Vector3.Magnitude(ProjectPointLine(posFix, point1Fix, point2Fix) - posFix);
             if (aux < 0.5f)
             {
                 float aDistance = Vector3.Distance(pos, point1Fix);
@@ -332,7 +333,8 @@ public class TimedTrailRenderer : MonoBehaviour
         {
             Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
             Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
-            float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            //float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            float aux = Vector3.Magnitude(ProjectPointLine(posFix, point1Fix, point2Fix) - posFix);
             if (aux < 0.5f)
             {
                 float aDistance = Vector3.Distance(pos, point1Fix);
@@ -384,5 +386,22 @@ public class TimedTrailRenderer : MonoBehaviour
             if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
         }
         return time;
+    }
+
+
+    // Project /point/ onto a line.
+    public static Vector3 ProjectPointLine(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
+    {
+        Vector3 relativePoint = point - lineStart;
+        Vector3 lineDirection = lineEnd - lineStart;
+        float length = lineDirection.magnitude;
+        Vector3 normalizedLineDirection = lineDirection;
+        if (length > .000001f)
+            normalizedLineDirection /= length;
+
+        float dot = Vector3.Dot(normalizedLineDirection, relativePoint);
+        dot = Mathf.Clamp(dot, 0.0F, length);
+
+        return lineStart + normalizedLineDirection * dot;
     }
 }
