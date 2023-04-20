@@ -29,5 +29,6 @@ public class DontDestroyOnLoadThis : MonoBehaviour
     private void OnDestroy()
     {
         OnLoadEvent.onLoad.RemoveListener(OnLoad);
+        OnLoadEvent.onLoaded.RemoveListener(OnLoaded);
     }
 }
