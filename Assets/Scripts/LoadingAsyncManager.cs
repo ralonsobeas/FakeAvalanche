@@ -41,6 +41,7 @@ public class LoadingAsyncManager : MonoBehaviour
 
     IEnumerator LoadYourAsyncScene()
     {
+        OnLoadEvent.OnLoad();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
 
         // Wait until the asynchronous scene fully loads
