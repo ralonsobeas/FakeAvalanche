@@ -8,11 +8,17 @@ public class DontDestroyOnLoadThis : MonoBehaviour
     void Start()
     {
         OnLoadEvent.onLoad.AddListener(OnLoad);
+        OnLoadEvent.onLoaded.AddListener(OnLoaded);
     }
 
 
 
     private void OnLoad()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnLoaded()
     {
         transform.parent = FindObjectOfType<OnLoadEvent>().transform;
         transform.parent = null;
