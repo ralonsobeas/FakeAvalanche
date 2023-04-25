@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000012177030548
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 1000013065888612}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0.801, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1.5594242}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1.5594242}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4000013258905692}
@@ -419,6 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013258905692}
   - component: {fileID: 95000012020201790}
+  - component: {fileID: 9217579740978573242}
   m_Layer: 0
   m_Name: flag_med
   m_TagString: Untagged
@@ -435,7 +436,7 @@ Transform:
   m_GameObject: {fileID: 1000014124467848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7178677, y: 0.79967433, z: 0.79967433}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4000012177030548}
@@ -463,3 +464,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9217579740978573242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014124467848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e0936a6db120d44b1478c2a2b0e32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flagCloth: {fileID: 1000010000609498}
