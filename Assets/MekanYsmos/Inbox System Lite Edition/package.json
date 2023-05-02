@@ -1,0 +1,25 @@
+{
+  "name": "com.mekanysmos.inboxsystemlite",
+  "version": "1.0.0",
+  "displayName": "Inbox System Lite Editon",
+  "description": "Inbox System Lite Edition helps you create a mail system similar to famous simulation games. The system is simple to use and easy to adapt to your own game and design.",
+  "unity": "2019.4",
+  "unityRelease": "34f1",
+  "dependencies": {
+    "com.unity.textmeshpro": "2.1.6"
+  },
+  "keywords": [
+    "categories",
+    "email",
+    "mail",
+    "system",
+    "inbox",
+    "social feed",
+    "news"
+  ],
+  "author": {
+    "name": "MekanYsmos Games",
+    "email": "contact@mekanysmos.com",
+    "url": "https://www.mekanysmos.com"
+  }
+}

@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UIElements;
 using System.Linq;
+//using UnityEditorInternal.Profiling.Memory.Experimental;
 
 /// <summary>
 /// You can user default trail renderer if you dont need your tracks to fade slowly
@@ -45,6 +46,9 @@ public class TimedTrailRenderer : MonoBehaviour
 
     private int layer_mask;
     private Mesh mesh;
+
+    [SerializeField]
+    private bool isPhysics = true;
 
     public class Point
     {
@@ -108,37 +112,9 @@ public class TimedTrailRenderer : MonoBehaviour
                 if (make)
                 {
                     bool isNearGround = true;
-                    float relativePosition = this.transform.position.y - Terrain.activeTerrain.SampleHeight(this.transform.position);
-                    if (relativePosition >= 1 || relativePosition < 0) isNearGround = false;
-                    bool isLower = true;
-                    /*float maxDistX = 0.3f;
-                    float maxDistZ = 0.3f;
-                    float minDistanceSqr = 1f;
-                    float lowestRelativeY = Mathf.Infinity;
-                    Vector3 nearestVextex = Vector3.zero;
-                    bool hitAnything = false;
-                    foreach (Vector3 vertex in mesh.vertices)
-                    {
-                        if(!((vertex.x + maxDistX > transform.position.x && vertex.x - maxDistX < transform.position.x) && (vertex.z + maxDistZ > transform.position.z && vertex.z - maxDistZ < transform.position.z)))
-                        {
-                            continue;
-                        }
-                        Vector3 diff = transform.position - vertex;
-                        float relativeVertexPosition = vertex.y - Terrain.activeTerrain.SampleHeight(vertex);
-                        float distSqr = diff.sqrMagnitude;
-                        if (distSqr < minDistanceSqr && relativeVertexPosition < lowestRelativeY)
-                        {
-                            hitAnything = true;
-                            //minDistanceSqr = distSqr;
-                            lowestRelativeY = relativeVertexPosition;
-                            nearestVextex = vertex;
-                        }
-                    }
-                    Debug.Log(nearestVextex.y + " " + transform.position.y);
-                    if (lowestRelativeY <= relativePosition) isLower = false;
-                    if (!hitAnything) isLower = true;
-                    */
-                    if (isNearGround && isLower)
+                    //float relativePosition = this.transform.position.y - Terrain.activeTerrain.SampleHeight(this.transform.position);
+                    //if (relativePosition >= 1 || relativePosition < 0) isNearGround = false;
+                    if (isNearGround)
                     {
                         Point p = new Point();
                         p.position = transform.position;
@@ -215,12 +191,8 @@ public class TimedTrailRenderer : MonoBehaviour
 
                 foreach (Point p in points)
                 {
-                    float time = 0;
-                    if (!ignorelifeTime) time = (Time.time - p.timeCreated) / lifeTime;
-                    float relativePosition = p.position.y - Terrain.activeTerrain.SampleHeight(p.position);
+                    float time = getTime(p);
                     //Debug.Log("Point "+ i +" position: " + p.position + " | Terrain position height: " + Terrain.activeTerrain.SampleHeight(p.position) + " | Relative position height: " + (p.position.y - Terrain.activeTerrain.SampleHeight(p.position)));
-                    time = time + relativePosition;
-                    if (relativePosition >= 1 || relativePosition < 0) time = 1;
                     
 
                     Color color = Color.Lerp(Color.white, Color.clear, time);
@@ -304,5 +276,131 @@ public class TimedTrailRenderer : MonoBehaviour
                 */
             }
         }
+    }
+
+    public bool getHeight(Vector3 pos, out float y)
+    {
+        y = 1f;
+        if (!isPhysics) return false;
+        if (points.Count < 2) return false;
+
+        Vector3 posFix = new Vector3(pos.x, 0, pos.z);
+        bool ok = false;
+        float minHeight = 0f;
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
+            Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
+            //float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            float aux = Vector3.Magnitude(ProjectPointLine(posFix, point1Fix, point2Fix) - posFix);
+            if (aux < 0.5f)
+            {
+                float aDistance = Vector3.Distance(pos, point1Fix);
+                float bDistance = Vector3.Distance(pos, point2Fix);
+                bool seSuma, seSuma2;
+                float time1 = (1f - getTime((Point)points[i], out seSuma));
+                float time2 = (1f - getTime((Point)points[i + 1], out seSuma2));
+                float aux2 = Mathf.Lerp(time1, time2, aDistance / (aDistance + bDistance));
+
+                if (seSuma || seSuma2)
+                {
+                    //print(aux2);
+                    if(minHeight < aux)
+                        minHeight = aux2;
+                }
+                ok = true;
+            }
+        }
+        minHeight = 1f - minHeight;
+        y = minHeight > 0f ? minHeight : 0f;
+        if (y > 1f)
+            y = 1f;
+        return ok;
+    }
+
+    public bool getHeightV2(Vector3 pos, out float y)
+    {
+        y = 1f;
+        if (!isPhysics) return false;
+        if (points.Count < 2) return false;
+
+        Vector3 posFix = new Vector3(pos.x, 0, pos.z);
+        bool ok = false;
+        float sumatorioHeights = 0f;
+
+        for (int i = 0; i < points.Count - 1; i++)
+        {
+            Vector3 point1Fix = new Vector3(((Point)points[i]).position.x, 0, ((Point)points[i]).position.z);
+            Vector3 point2Fix = new Vector3(((Point)points[i + 1]).position.x, 0, ((Point)points[i + 1]).position.z);
+            //float aux = UnityEditor.HandleUtility.DistancePointLine(posFix, point1Fix, point2Fix);
+            float aux = Vector3.Magnitude(ProjectPointLine(posFix, point1Fix, point2Fix) - posFix);
+            if (aux < 0.5f)
+            {
+                float aDistance = Vector3.Distance(pos, point1Fix);
+                float bDistance = Vector3.Distance(pos, point2Fix);
+                bool seSuma, seSuma2;
+                float time1 = 1f - getTime((Point)points[i], out seSuma);
+                float time2 = 1f - getTime((Point)points[i + 1], out seSuma2);
+                float aux2 = Mathf.Lerp(time1, time2, aDistance / (aDistance + bDistance));
+                if (seSuma || seSuma2)
+                {
+                    sumatorioHeights += aux2;
+                    ok = true;
+                }
+            }
+        }
+        sumatorioHeights = 1f - sumatorioHeights;
+        y = sumatorioHeights > 0f ? sumatorioHeights : 0f;
+        if(y > 1f)
+        {
+            y = 1f;
+        }
+        return ok;
+    }
+
+    float getTime(Point point)
+    {
+        float time = 0;
+        if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
+        float relativePosition = point.position.y - Terrain.activeTerrain.SampleHeight(point.position);
+        time += relativePosition;
+        if (relativePosition >= 2) time = 1;
+        if (relativePosition < 0) if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
+        return time;
+    }
+    float getTime(Point point, out bool ok)
+    {
+        ok = true;
+        float time = 0;
+        if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
+        float relativePosition = point.position.y - Terrain.activeTerrain.SampleHeight(point.position);
+        time += relativePosition;
+        if (relativePosition >= 2)
+        {
+            ok = false;
+            time = 1;
+        }
+        if(relativePosition < 0)
+        {
+            if (!ignorelifeTime) time = (Time.time - point.timeCreated) / lifeTime;
+        }
+        return time;
+    }
+
+
+    // Project /point/ onto a line.
+    public static Vector3 ProjectPointLine(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
+    {
+        Vector3 relativePoint = point - lineStart;
+        Vector3 lineDirection = lineEnd - lineStart;
+        float length = lineDirection.magnitude;
+        Vector3 normalizedLineDirection = lineDirection;
+        if (length > .000001f)
+            normalizedLineDirection /= length;
+
+        float dot = Vector3.Dot(normalizedLineDirection, relativePoint);
+        dot = Mathf.Clamp(dot, 0.0F, length);
+
+        return lineStart + normalizedLineDirection * dot;
     }
 }

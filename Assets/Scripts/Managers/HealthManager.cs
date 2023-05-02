@@ -1,17 +1,23 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     //TODO change in future to glasses property and allows inventary
-    public GameObject[] glasses_image_states; 
+    public GameObject[] glasses_image_states;
+    public GameObject objectToCleanGlasses;
+    public GameObject glassesImageFog;
     public int numDamage = 0;
     // secs to clean glasses
-    public int timeToCleanGlasses = 300;
+    public float timeToBlurGlasses = 60f;
+    private int invokeCounter = 0;
+    [Range(0, 1)] public float percentageDecreaseTime = 0.3f;
     void Start()
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
         ((GameManager)GameManager.Instance).StartGame();
+        CallInvokeFogGlasses();
     }
 
     public void EquipGlasses()
@@ -26,8 +32,10 @@ public class HealthManager : MonoBehaviour
     {
         if (numDamage >= 3) return;
         numDamage++;
+        timeToBlurGlasses *= percentageDecreaseTime;
         HideAllGlasses();
         UnHidePositionGlasses(numDamage);
+        
         // change picture broken and frozen glasses
     }
 
@@ -36,16 +44,38 @@ public class HealthManager : MonoBehaviour
         // change picture glasses
     }
 
-    public void CountdownToCleanGlasses()
+    private void CallInvokeFogGlasses()
     {
-        StartCoroutine(TimeToFogUpGlasses(timeToCleanGlasses));
+        if (numDamage >= 3)
+        {
+            return;
+        }
+        invokeCounter++;
+        Invoke("CountdownToCleanGlasses", timeToBlurGlasses);
     }
 
-    IEnumerator TimeToFogUpGlasses(int secs) {
-        yield return new WaitForSeconds(secs);
-        // show foggy glasses
+    public void CountdownToCleanGlasses()
+    {
+        invokeCounter--;
+        if (invokeCounter != 0)
+        {
+            return;
+        }
+        // foggy glasses
+        glassesImageFog.SetActive(true);
+        CallInvokeFogGlasses();
+
+
     }
-    
+
+    public void CleanGlasses()
+    {
+        // limpiar gafas
+        glassesImageFog.SetActive(false);
+        CallInvokeFogGlasses();
+    }
+
+
     private void HideAllGlasses()
     {
         for(int i = 0; i < glasses_image_states.Length; i++)
@@ -57,5 +87,13 @@ public class HealthManager : MonoBehaviour
     private void UnHidePositionGlasses(int position)
     {
         glasses_image_states[position].SetActive(true);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == objectToCleanGlasses.name)
+        {
+            CleanGlasses();
+        }
     }
 }

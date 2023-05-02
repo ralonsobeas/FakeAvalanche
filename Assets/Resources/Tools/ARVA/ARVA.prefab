@@ -368,8 +368,13 @@ MonoBehaviour:
   arvaArrow: {fileID: 2766738607717851903}
   arrows:
   - {fileID: 21300000, guid: b1c80f27ef1d855489403176b7a5d4c2, type: 3}
-  - {fileID: 21300000, guid: 8e82cbb695232b54aade536a3c6fad90, type: 3}
+  - {fileID: 21300000, guid: 47b373051868b124c876d028db90f1aa, type: 3}
+  - {fileID: 21300000, guid: e7b42a743285cc7429aa89232ec02d6c, type: 3}
+  - {fileID: 21300000, guid: 4b8b60151e9be4a4eb3a1e961bb8ab02, type: 3}
+  - {fileID: 21300000, guid: 49f85416412e479428e2b6f283460daa, type: 3}
+  - {fileID: 21300000, guid: 310148eb493a8984b8e5c2ed77211c28, type: 3}
   - {fileID: 21300000, guid: 19c2a893800b5b54f84b3a8a19468016, type: 3}
+  - {fileID: 21300000, guid: 8e82cbb695232b54aade536a3c6fad90, type: 3}
 --- !u!1 &2568532322484482571
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e82cbb695232b54aade536a3c6fad90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1c80f27ef1d855489403176b7a5d4c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -6,11 +6,16 @@ using UnityEngine;
 public class GameManager : Singleton
 {
     public delegate void OnStart();
+    
 
     public event OnStart OnGameStart;
     public event OnStart OnDecreaseLife;
     public event OnStart OnDie;
     public event OnStart OnCleanGlasses;
+
+    public AudioClip[] checksVoiceWalkie;
+
+    public event OnStart OnVoiceWalkieTalkie;
 
     public void StartGame()
     {
@@ -30,5 +35,10 @@ public class GameManager : Singleton
     public void CleanGlasses()
     {
         OnCleanGlasses();
+    }
+
+    public void PlayNextCheckWalkie()
+    {
+        OnVoiceWalkieTalkie();
     }
 }
