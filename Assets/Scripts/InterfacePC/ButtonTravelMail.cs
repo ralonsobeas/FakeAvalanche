@@ -51,6 +51,8 @@ public class ButtonTravelMail : MonoBehaviour
         GetComponent<Button>().colors = colors;
     }
 
+    [ContextMenu("LoadScene")]
+    private void LoadScene() => StartCoroutine(LoadYourAsyncScene());
 
     IEnumerator LoadYourAsyncScene()
     {
