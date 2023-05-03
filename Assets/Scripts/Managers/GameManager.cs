@@ -37,6 +37,7 @@ public class GameManager : Singleton
         OnCleanGlasses();
     }
 
+    [ContextMenu("PlayNextStepWalkie")]
     public void PlayNextCheckWalkie()
     {
         OnVoiceWalkieTalkie();
