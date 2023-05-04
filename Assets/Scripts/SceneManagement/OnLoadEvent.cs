@@ -20,13 +20,19 @@ public class OnLoadEvent : MonoBehaviour
 
     private void Start()
     {
-        if (!isLoading)
-            onLoad.Invoke();
+        if (isLoading)
+        {
+            isLoading = false;
+            onLoaded.Invoke();
+        }
     }
 
     public static void OnLoad()
     {
-        if (isLoading)
-            onLoaded.Invoke();
+        if (!isLoading)
+        {
+            isLoading = true;
+            onLoad.Invoke();
+        }
     }
 }
