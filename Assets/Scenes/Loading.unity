@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 1267083778}
   - component: {fileID: 1267083777}
   m_Layer: 0
-  m_Name: XRRig
+  m_Name: OnLoadEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
