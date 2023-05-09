@@ -4637,8 +4637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 30
-  cantAffordFeedback: {fileID: 0}
-  priceLabel: {fileID: 0}
+  cantAffordFeedback: {fileID: 1078419393}
+  priceLabel: {fileID: 1402817272}
 --- !u!65 &970749800
 BoxCollider:
   m_ObjectHideFlags: 0
