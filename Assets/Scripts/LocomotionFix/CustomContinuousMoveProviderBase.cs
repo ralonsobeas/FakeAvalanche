@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 /// Locomotion provider that allows the user to smoothly move their rig continuously over time.
 /// </summary>
 /// <seealso cref="LocomotionProvider"/>
-public class CustomContinuousMoveProviderBase : LocomotionProvider
+public abstract class CustomContinuousMoveProviderBase : LocomotionProvider
 {
     /// <summary>
     /// Defines when gravity begins to take effect.
