@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton
 {
     public delegate void OnStart();
-    
+    public delegate void OnPlayClip(AudioClip clip);
 
     public event OnStart OnGameStart;
     public event OnStart OnDecreaseLife;
     public event OnStart OnDie;
     public event OnStart OnCleanGlasses;
+    public event OnPlayClip OnPlayMissionClip; 
+
+    
 
     public AudioClip[] checksVoiceWalkie;
 
@@ -21,7 +25,7 @@ public class GameManager : Singleton
     {
         OnGameStart();
     }
-   
+
     public void DecreaseLife()
     {
         OnDecreaseLife();
@@ -42,4 +46,10 @@ public class GameManager : Singleton
     {
         OnVoiceWalkieTalkie();
     }
+
+    public void PlayMissionClip(AudioClip clip)
+    {
+        OnPlayMissionClip(clip);
+    }
+
 }
