@@ -34,7 +34,7 @@ public class TerrainGravity : MonoBehaviour
         if (!meCaio && transform.position.y - getHeight() > maxStepHeight && stabilityTerrain.SampleHeight(transform.position) < 10f)
         {
             Instantiate(lineTrailHole, transform.position, Quaternion.identity);
-            // TODO: Dañar
+            ((GameManager)GameManager.Instance).DecreaseLife();
         }
         meCaio = stabilityTerrain.SampleHeight(transform.position) < 10f;
         transform.position = new Vector3(transform.position.x, getHeight(), transform.position.z);
