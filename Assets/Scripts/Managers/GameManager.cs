@@ -13,13 +13,7 @@ public class GameManager : Singleton
     public event OnStart OnDecreaseLife;
     public event OnStart OnDie;
     public event OnStart OnCleanGlasses;
-    public event OnPlayClip OnPlayMissionClip; 
-
-    
-
-    public AudioClip[] checksVoiceWalkie;
-
-    public event OnStart OnVoiceWalkieTalkie;
+    public event OnPlayClip OnPlayMissionClip;
 
     public void StartGame()
     {
@@ -39,12 +33,6 @@ public class GameManager : Singleton
     public void CleanGlasses()
     {
         OnCleanGlasses();
-    }
-
-    [ContextMenu("PlayNextStepWalkie")]
-    public void PlayNextCheckWalkie()
-    {
-        OnVoiceWalkieTalkie();
     }
 
     public void PlayMissionClip(AudioClip clip)
