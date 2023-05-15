@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TerrainGravity : MonoBehaviour
 {
@@ -29,7 +30,13 @@ public class TerrainGravity : MonoBehaviour
 
     private void OnLoaded()
     {
-        enabled = FindObjectOfType<TerrainSnowManager>() != null;
+        bool isSnow = FindObjectOfType<TerrainSnowManager>() != null;
+        enabled = isSnow;
+        CustomContinuousMoveProvider customProvider = GetComponent<CustomContinuousMoveProvider>();
+        customProvider.enabled = isSnow;
+        ActionBasedContinuousMoveProvider actionProvider = GetComponent<ActionBasedContinuousMoveProvider>();
+        actionProvider.enabled = !isSnow;
+        GetComponent<CharacterControllerDriver>().locomotionProvider = isSnow ? customProvider : actionProvider;
     }
 
     // Update is called once per frame
