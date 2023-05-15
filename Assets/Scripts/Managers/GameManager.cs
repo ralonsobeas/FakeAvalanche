@@ -2,26 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton
 {
     public delegate void OnStart();
-    
+    public delegate void OnPlayClip(AudioClip clip);
 
     public event OnStart OnGameStart;
     public event OnStart OnDecreaseLife;
     public event OnStart OnDie;
     public event OnStart OnCleanGlasses;
-
-    public AudioClip[] checksVoiceWalkie;
-
-    public event OnStart OnVoiceWalkieTalkie;
+    public event OnPlayClip OnPlayMissionClip;
 
     public void StartGame()
     {
         OnGameStart();
     }
-   
+
     public void DecreaseLife()
     {
         OnDecreaseLife();
@@ -37,9 +35,9 @@ public class GameManager : Singleton
         OnCleanGlasses();
     }
 
-    [ContextMenu("PlayNextStepWalkie")]
-    public void PlayNextCheckWalkie()
+    public void PlayMissionClip(AudioClip clip)
     {
-        OnVoiceWalkieTalkie();
+        OnPlayMissionClip(clip);
     }
+
 }

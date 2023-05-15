@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Colocar (solo) un GameObject de este tipo en cada escena para que llame al evento onLoaded automáticamente
@@ -18,8 +19,17 @@ public class OnLoadEvent : MonoBehaviour
     /// </summary>
     private static bool isLoading = false;
 
+    private static bool firstTime = true; // ESTO ES UNA CHAPUZA PARA SER CAPAZ DE BUILDEAR CON ESCENA NIEVE COMO PRIMERA ESCENA
+
     private void Start()
     {
+        if (firstTime)
+        {
+            firstTime = false;
+            //SceneManager.LoadScene(1);
+            return;
+        }
+            
         if (isLoading)
         {
             isLoading = false;

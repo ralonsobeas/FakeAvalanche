@@ -253,15 +253,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04da738669d5c406aa001b5209b494eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glassess_initialState: {fileID: 2544127631110619843}
   glasses_image_states:
-  - {fileID: 2544127631110619843}
   - {fileID: 2544127630875997896}
   - {fileID: 2544127631330470889}
   - {fileID: 2544127630846786619}
   objectToCleanGlasses: {fileID: 6470474524563808908, guid: 2dcfd83ecba2a4912bf72ef8af5d3577, type: 3}
   glassesImageFog: {fileID: 824488668718863628}
-  numDamage: 0
-  timeToBlurGlasses: 60
+  numDamage: -1
+  timeToBlurGlasses: 0.48600006
   percentageDecreaseTime: 0.3
 --- !u!114 &2544127630824354642
 MonoBehaviour:
@@ -292,9 +292,7 @@ MonoBehaviour:
   sfxHurt: {fileID: 0}
   sfxDie: {fileID: 0}
   sfxCleanGlasses: {fileID: 0}
-  voiceWalkie: {fileID: 0}
   mainSource: {fileID: 0}
-  secondarySource: {fileID: 0}
   leftSource: {fileID: 4602203141785697409}
 --- !u!1 &2544127630846786619
 GameObject:
