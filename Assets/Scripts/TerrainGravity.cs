@@ -24,6 +24,12 @@ public class TerrainGravity : MonoBehaviour
     {
         trails = FindObjectsOfType<TimedTrailRenderer>();
         snowHeightMap = FindObjectOfType<Terrain>().terrainData.alphamapTextures[0];
+        OnLoadEvent.onLoaded.AddListener(OnLoaded);
+    }
+
+    private void OnLoaded()
+    {
+        enabled = FindObjectOfType<TerrainSnowManager>() != null;
     }
 
     // Update is called once per frame

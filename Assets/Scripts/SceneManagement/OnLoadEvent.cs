@@ -26,7 +26,7 @@ public class OnLoadEvent : MonoBehaviour
         if (firstTime)
         {
             firstTime = false;
-            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(1);
             return;
         }
             
