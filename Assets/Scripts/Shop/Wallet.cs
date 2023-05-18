@@ -19,6 +19,12 @@ public class Wallet : MonoBehaviour
 
     public static bool CanAffordMe(int price) => price <= coins;
 
+    [ContextMenu("Reset Wallet")]
+    private void ResetWallet()
+    {
+        PlayerPrefs.SetInt("wallet", initialBalance);
+    }
+
     public static void Pay(int price)
     {
         if (!CanAffordMe(price)) throw new UnityException("Se supone que no puedes pagar esto");
