@@ -5,6 +5,9 @@ using static Unity.Burst.Intrinsics.X86;
 
 public class ButtonGenero: MonoBehaviour
 {
+
+    public InterfaceManager interfaceManager; 
+
     public AudioClip messageClip;
     public AudioSource messageSound;
     private void OnTriggerEnter(Collider other)
