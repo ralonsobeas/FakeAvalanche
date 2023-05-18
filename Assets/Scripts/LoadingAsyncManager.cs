@@ -8,7 +8,6 @@ public class LoadingAsyncManager : MonoBehaviour
 {
     private float time = 0;
     public float timeToStartLoading = 3;
-    public string scene;
 
     private bool loadedOnce = false;
     // Update is called once per frame
@@ -42,7 +41,7 @@ public class LoadingAsyncManager : MonoBehaviour
     IEnumerator LoadYourAsyncScene()
     {
         OnLoadEvent.OnLoad();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(LoadingLevelName.NextLevelName);
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
