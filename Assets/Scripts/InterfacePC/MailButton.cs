@@ -5,6 +5,7 @@ using UnityEngine;
 public class MailButton : MonoBehaviour
 {
     public GameObject pagesContainer;
+    public GameObject mailContainer;
     public GameObject activeMailContainer;
     public InterfaceManager interfaceManager;
 
@@ -18,7 +19,7 @@ public class MailButton : MonoBehaviour
             child.gameObject.SetActive(false);
         }
         //Activar el hijo de los correos
-        pagesContainer.transform.GetChild(1).gameObject.SetActive(true);
+        mailContainer.SetActive(true);
 
     }
 
