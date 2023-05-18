@@ -4,14 +4,12 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip musicGame, sfxHurt, sfxDie, sfxCleanGlasses;
     public AudioSource mainSource, leftSource;
-
-    private int counterVoicesWalkieTalkie = 0;
     void Start()
     {
         ((GameManager)GameManager.Instance).OnDecreaseLife += StartSfxHurt;
         ((GameManager)GameManager.Instance).OnCleanGlasses += StartSfxCleanGlasses;
         ((GameManager)GameManager.Instance).OnDie += StartSfxDie;
-        ((GameManager)GameManager.Instance).OnVoiceWalkieTalkie += StartVoiceWalkie;
+        ((GameManager)GameManager.Instance).OnPlayMissionClip += PlayMissionClip;
     }
 
     public void StartSfxHurt()
@@ -19,14 +17,10 @@ public class MusicManager : MonoBehaviour
         mainSource.PlayOneShot(sfxHurt,0.4f);
     }
 
-    public void StartVoiceWalkie()
+    public void PlayMissionClip(AudioClip clip)
     {
-        Debug.Log("entro a reproducir " + counterVoicesWalkieTalkie + " " + ((GameManager)GameManager.Instance).checksVoiceWalkie[counterVoicesWalkieTalkie]);
-        if (counterVoicesWalkieTalkie < ((GameManager)GameManager.Instance).checksVoiceWalkie.Length - 1)
-        {
-            leftSource.PlayOneShot(((GameManager)GameManager.Instance).checksVoiceWalkie[counterVoicesWalkieTalkie]);
-            counterVoicesWalkieTalkie++;
-        }
+        Debug.Log("entro a reproducir clip");
+        leftSource.PlayOneShot(clip);
     }
 
     public void StartSfxDie()

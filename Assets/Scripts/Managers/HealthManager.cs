@@ -5,10 +5,11 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     //TODO change in future to glasses property and allows inventary
+    public GameObject glassess_initialState;
     public GameObject[] glasses_image_states;
     public GameObject objectToCleanGlasses;
     public GameObject glassesImageFog;
-    public int numDamage = 0;
+    public int numDamage = -1;
     // secs to clean glasses
     public float timeToBlurGlasses = 60f;
     private int invokeCounter = 0;
@@ -16,37 +17,30 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
+        ((GameManager)GameManager.Instance).OnDecreaseLife += BreakGlasses;
         ((GameManager)GameManager.Instance).StartGame();
         CallInvokeFogGlasses();
+        glassess_initialState.SetActive(true);
     }
 
     public void EquipGlasses()
     {
         HideAllGlasses();
-        UnHidePositionGlasses(0);
-        // Show picture glasses       
     }
 
     [ContextMenu("DecreaseLife")]
     public void BreakGlasses()
     {
-        if (numDamage >= 3) return;
+        if (numDamage >= glasses_image_states.Length - 1) return;
         numDamage++;
         timeToBlurGlasses *= percentageDecreaseTime;
         HideAllGlasses();
         UnHidePositionGlasses(numDamage);
-        
-        // change picture broken and frozen glasses
-    }
-
-    public void DestroyGlasses()
-    {
-        // change picture glasses
     }
 
     private void CallInvokeFogGlasses()
     {
-        if (numDamage >= 3)
+        if (numDamage >= glasses_image_states.Length - 1)
         {
             return;
         }
