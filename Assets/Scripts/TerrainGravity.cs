@@ -21,22 +21,30 @@ public class TerrainGravity : MonoBehaviour
     private bool meCaio = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        trails = FindObjectsOfType<TimedTrailRenderer>();
-        snowHeightMap = FindObjectOfType<Terrain>().terrainData.alphamapTextures[0];
+        
         OnLoadEvent.onLoaded.AddListener(OnLoaded);
     }
 
     private void OnLoaded()
     {
         bool isSnow = FindObjectOfType<TerrainSnowManager>() != null;
+        print(isSnow);
         enabled = isSnow;
         CustomContinuousMoveProvider customProvider = GetComponent<CustomContinuousMoveProvider>();
         customProvider.enabled = isSnow;
         ActionBasedContinuousMoveProvider actionProvider = GetComponent<ActionBasedContinuousMoveProvider>();
         actionProvider.enabled = !isSnow;
         GetComponent<CharacterControllerDriver>().locomotionProvider = isSnow ? customProvider : actionProvider;
+
+        if (!isSnow) return;
+
+        trails = FindObjectsOfType<TimedTrailRenderer>();
+        snowHeightMap = FindObjectOfType<Terrain>().terrainData.alphamapTextures[0];
+        foreach (Terrain t in FindObjectsOfType<Terrain>())
+            if (t.name.Contains("Stability"))
+                stabilityTerrain = t;
     }
 
     // Update is called once per frame

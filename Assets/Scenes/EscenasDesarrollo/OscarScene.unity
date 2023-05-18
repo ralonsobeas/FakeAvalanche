@@ -5779,6 +5779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XRRig
       objectReference: {fileID: 0}
+    - target: {fileID: 2307929783583215318, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2307929783583215324, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -5932,7 +5936,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 1408653670}
+  m_MaterialTemplate: {fileID: 1432900182}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -12878,7 +12882,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1344974589}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &1408653670
+--- !u!21 &1432900182
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -12923,7 +12927,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Array4:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 18700000, guid: b989c0ba82c272844955bfaf183cc994, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Array5:
@@ -18930,7 +18934,7 @@ GameObject:
   - component: {fileID: 1976872518}
   - component: {fileID: 1976872517}
   m_Layer: 19
-  m_Name: Terrain Depth
+  m_Name: Stability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19240,7 +19244,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2140918434
 GameObject:

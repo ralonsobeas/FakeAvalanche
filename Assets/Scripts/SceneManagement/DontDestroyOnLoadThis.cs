@@ -21,6 +21,11 @@ public class DontDestroyOnLoadThis : MonoBehaviour
     private void OnLoaded()
     {
         transform.parent = FindObjectOfType<OnLoadEvent>().transform;
+        Invoke("SetPosition",1f);
+    }
+
+    private void SetPosition()
+    {
         transform.position = transform.parent.position;
         transform.rotation = transform.parent.rotation;
         transform.parent = null;

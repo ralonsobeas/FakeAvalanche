@@ -17,18 +17,11 @@ public class OnLoadEvent : MonoBehaviour
     /// Si es false, las llamadas a onLoaded se ignoran.
     /// Si es true, las llamadas a onLoad se ignoran.
     /// </summary>
-    private static bool isLoading = false;
-
-    private static bool firstTime = true; // ESTO ES UNA CHAPUZA PARA SER CAPAZ DE BUILDEAR CON ESCENA NIEVE COMO PRIMERA ESCENA
+    private static bool isLoading = true;
 
     private void Start()
     {
-        if (firstTime)
-        {
-            firstTime = false;
-            SceneManager.LoadScene(1);
-            return;
-        }
+
             
         if (isLoading)
         {
