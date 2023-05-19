@@ -8,6 +8,8 @@ public class AudioMissionCheckPoint : MonoBehaviour
     [SerializeField]
     private AudioClip clipMission;
 
+    [SerializeField] private Boolean isAlert;
+
     [SerializeField] private float sphereRadius;
     public void Start()
     {
@@ -18,7 +20,7 @@ public class AudioMissionCheckPoint : MonoBehaviour
     {
         if (other.GetComponent<TerrainGravity>())
         {
-            ((GameManager)GameManager.Instance).PlayMissionClip(clipMission);
+            ((GameManager)GameManager.Instance).PlayMissionClip(clipMission,isAlert);
             gameObject.GetComponent<SphereCollider>().enabled = false;
         }
     }

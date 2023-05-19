@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class GameManager : Singleton
 {
     public delegate void OnStart();
-    public delegate void OnPlayClip(AudioClip clip);
+    public delegate void OnPlayClip(AudioClip clip, Boolean alert);
 
     public event OnStart OnGameStart;
     public event OnStart OnDecreaseLife;
@@ -35,9 +35,9 @@ public class GameManager : Singleton
         OnCleanGlasses();
     }
 
-    public void PlayMissionClip(AudioClip clip)
+    public void PlayMissionClip(AudioClip clip, Boolean alert)
     {
-        OnPlayMissionClip(clip);
+        OnPlayMissionClip(clip, alert);
     }
 
 }
