@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ public class GameManager : Singleton
     public delegate void OnPlayClip(AudioClip clip, Boolean alert);
 
     public delegate void OnAmbientTrigger(AudioSource ambient);
+    
+    public delegate void OnAlert(Alert alert);
 
     public event OnStart OnGameStart;
     public event OnStart OnDecreaseLife;
@@ -19,6 +22,8 @@ public class GameManager : Singleton
 
     public event OnAmbientTrigger OnEnterInAmbient;
     public event OnAmbientTrigger OnLeaveAmbient;
+
+    public event OnAlert OnFireAlert;
 
     
 
@@ -55,6 +60,11 @@ public class GameManager : Singleton
     public void LeaveAmbient(AudioSource ambientSource)
     {
         OnLeaveAmbient(ambientSource);
+    }
+
+    public void FireAlert(Alert alert)
+    {
+        OnFireAlert(alert);
     }
 
 }
