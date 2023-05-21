@@ -16,15 +16,24 @@ public class GameManager : Singleton
     public delegate void OnAlert(Alert alert);
 
     public event OnStart OnGameStart;
+    
+    // health events
     public event OnStart OnDecreaseLife;
     public event OnStart OnDie;
     public event OnStart OnCleanGlasses;
+    
+    // audio events
     public event OnPlayClip OnPlayMissionClip;
-
     public event OnAmbientTrigger OnEnterInAmbient;
     public event OnAmbientTrigger OnLeaveAmbient;
+    
+    // time events
     public event OnTimeStart OnMissionTimeStart;
+    public event OnTimeStart OnWinMission;
+    public event OnStart OnLoseMission;
 
+    public event OnStart OnVictimIsDied;
+    // alert events
     public event OnAlert OnFireAlert;
 
     private void Start()
@@ -75,6 +84,21 @@ public class GameManager : Singleton
     public void FireAlert(Alert alert)
     {
         OnFireAlert(alert);
+    }
+
+    public void WinMission(int secs)
+    {
+        OnWinMission(secs);
+    }
+
+    public void LoseMission()
+    {
+        OnLoseMission();
+    }
+
+    public void VictimIsDied()
+    {
+        OnVictimIsDied();
     }
 
 }
