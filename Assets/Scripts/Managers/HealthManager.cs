@@ -15,7 +15,7 @@ public class HealthManager : MonoBehaviour
     public float timeToBlurGlasses = 60f;
     private int invokeCounter = 0;
     [Range(0, 1)] public float percentageDecreaseTime = 0.3f;
-    private Boolean firstTimeToFogGlasses;
+    private Boolean firstTimeToFogGlasses = true;
     void Start()
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
@@ -62,9 +62,11 @@ public class HealthManager : MonoBehaviour
             return;
         }
         // foggy glasses
-        if(!firstTimeToFogGlasses)
+        if (firstTimeToFogGlasses)
+        {
             ((GameManager)GameManager.Instance).FireAlert(Alert.FogGlasses);
-        firstTimeToFogGlasses = true;
+            firstTimeToFogGlasses = false;
+        }
         glassesImageFog.SetActive(true);
         CallInvokeFogGlasses();
 
