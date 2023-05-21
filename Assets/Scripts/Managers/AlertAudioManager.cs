@@ -6,7 +6,7 @@ using UnityEngine;
 public class AlertAudioManager : MonoBehaviour
 {
     public AudioClip alertDecreaseLife,
-        alertStayAfk,
+        alertVictimProbablyIsDied,
         alertFogGlasses,
         alertTooFarFromObjective,
         firstAlertToDie,
@@ -34,6 +34,9 @@ public class AlertAudioManager : MonoBehaviour
                 break;
             case Alert.SecondAlertToDie:
                 ((GameManager)GameManager.Instance).PlayMissionClip(secondAlertToDie, true);
+                break;
+            case Alert.VictimProbablyIsDied:
+                ((GameManager)GameManager.Instance).PlayMissionClip(alertVictimProbablyIsDied, true);
                 break;
             default:
                 Debug.Log("alert not found-> " + alert);

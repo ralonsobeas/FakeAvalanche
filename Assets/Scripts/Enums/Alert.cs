@@ -4,6 +4,7 @@ namespace Enums
     {
         DecreaseLife,
         FogGlasses,
+        VictimProbablyIsDied,
         TooFarFromObjective,
         FirstAlertToDie,
         SecondAlertToDie
