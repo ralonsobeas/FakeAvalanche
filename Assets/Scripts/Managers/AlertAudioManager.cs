@@ -9,8 +9,8 @@ public class AlertAudioManager : MonoBehaviour
         alertStayAfk,
         alertFogGlasses,
         alertTooFarFromObjective,
-        alertFiveMinsToDie,
-        alertTwoMinsToDie; 
+        firstAlertToDie,
+        secondAlertToDie; 
     void Start()
     {
         ((GameManager)GameManager.Instance).OnFireAlert += FireAlert;
@@ -23,20 +23,17 @@ public class AlertAudioManager : MonoBehaviour
             case Alert.DecreaseLife:
                 ((GameManager)GameManager.Instance).PlayMissionClip(alertDecreaseLife, true);
                 break;
-            case Alert.StayAfk:
-                ((GameManager)GameManager.Instance).PlayMissionClip(alertStayAfk, true);
-                break;
             case Alert.FogGlasses:
                 ((GameManager)GameManager.Instance).PlayMissionClip(alertFogGlasses, true);
                 break;
             case Alert.TooFarFromObjective:
                 ((GameManager)GameManager.Instance).PlayMissionClip(alertTooFarFromObjective, true);
                 break;
-            case Alert.FiveMinsToDie:
-                ((GameManager)GameManager.Instance).PlayMissionClip(alertFiveMinsToDie, true);
+            case Alert.FirstAlertToDie:
+                ((GameManager)GameManager.Instance).PlayMissionClip(firstAlertToDie, true);
                 break;
-            case Alert.TwoMinsToDie:
-                ((GameManager)GameManager.Instance).PlayMissionClip(alertTwoMinsToDie, true);
+            case Alert.SecondAlertToDie:
+                ((GameManager)GameManager.Instance).PlayMissionClip(secondAlertToDie, true);
                 break;
             default:
                 Debug.Log("alert not found-> " + alert);
