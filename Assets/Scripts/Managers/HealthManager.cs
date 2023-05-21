@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Enums;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class HealthManager : MonoBehaviour
     public float timeToBlurGlasses = 60f;
     private int invokeCounter = 0;
     [Range(0, 1)] public float percentageDecreaseTime = 0.3f;
+    private Boolean firstTimeToFogGlasses;
     void Start()
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
@@ -32,7 +34,12 @@ public class HealthManager : MonoBehaviour
     public void BreakGlasses()
     {
         if (numDamage >= glasses_image_states.Length - 1) return;
+        
         numDamage++;
+        if (numDamage == 0)
+        {
+            ((GameManager)GameManager.Instance).FireAlert(Alert.DecreaseLife);
+        }
         timeToBlurGlasses *= percentageDecreaseTime;
         HideAllGlasses();
         UnHidePositionGlasses(numDamage);
@@ -56,6 +63,9 @@ public class HealthManager : MonoBehaviour
             return;
         }
         // foggy glasses
+        if(!firstTimeToFogGlasses)
+            ((GameManager)GameManager.Instance).FireAlert(Alert.FogGlasses);
+        firstTimeToFogGlasses = true;
         glassesImageFog.SetActive(true);
         CallInvokeFogGlasses();
 
