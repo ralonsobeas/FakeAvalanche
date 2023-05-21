@@ -20,7 +20,6 @@ public class HealthManager : MonoBehaviour
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
         ((GameManager)GameManager.Instance).OnDecreaseLife += BreakGlasses;
-        ((GameManager)GameManager.Instance).StartGame();
         CallInvokeFogGlasses();
         glassess_initialState.SetActive(true);
     }
