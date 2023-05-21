@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class GameManager : Singleton
 {
     public delegate void OnStart();
+    public delegate void OnTimeStart(int secs);
     public delegate void OnPlayClip(AudioClip clip, Boolean alert);
 
     public delegate void OnAmbientTrigger(AudioSource ambient);
@@ -22,14 +23,26 @@ public class GameManager : Singleton
 
     public event OnAmbientTrigger OnEnterInAmbient;
     public event OnAmbientTrigger OnLeaveAmbient;
+    public event OnTimeStart OnMissionTimeStart;
 
     public event OnAlert OnFireAlert;
 
-    
+    [Range(15, 1200)] public int missionSecs = 15;
+
+    private void Start()
+    {
+        StartGame();
+        StartMissionTime();
+    }
 
     public void StartGame()
     {
         OnGameStart();
+    }
+
+    public void StartMissionTime()
+    {
+        OnMissionTimeStart(missionSecs);
     }
 
     public void DecreaseLife()
