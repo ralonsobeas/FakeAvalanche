@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
@@ -9,7 +10,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private int firstAlertToDie = 100;
     [SerializeField] private int secondAlertToDie = 40;
     [SerializeField] private int missionSecs = 200;
-    
+    private float time;
     void Start()
     {
         MissionStart();
@@ -34,5 +35,15 @@ public class TimeManager : MonoBehaviour
     {
         Debug.Log("segunda alerta");
         ((GameManager)GameManager.Instance).FireAlert(Alert.SecondAlertToDie);
+    }
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (time > missionSecs)
+        {
+            ((GameManager)GameManager.Instance).FireAlert(Alert.VictimProbablyIsDied);
+            ((GameManager)GameManager.Instance).VictimIsDied();
+        }
     }
 }
