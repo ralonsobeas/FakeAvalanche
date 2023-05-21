@@ -8,15 +8,16 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private int firstAlertToDie = 100;
     [SerializeField] private int secondAlertToDie = 40;
-
-    private int time;
+    [SerializeField] private int missionSecs = 200;
+    
     void Start()
     {
-        ((GameManager)GameManager.Instance).OnMissionTimeStart += MissionStart;
+        MissionStart();
     }
 
-    public void MissionStart(int missionSecs)
+    public void MissionStart()
     {
+        ((GameManager)GameManager.Instance).StartMissionTime(missionSecs);
         int timeToFirstAlert = missionSecs - firstAlertToDie;
         int timeToSecondAlert = missionSecs - secondAlertToDie;
         Invoke("CountdownFirstAlertTime", timeToFirstAlert);

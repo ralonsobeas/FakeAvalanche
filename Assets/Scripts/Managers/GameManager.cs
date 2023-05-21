@@ -27,12 +27,9 @@ public class GameManager : Singleton
 
     public event OnAlert OnFireAlert;
 
-    [Range(15, 1200)] public int missionSecs = 15;
-
     private void Start()
     {
         StartGame();
-        StartMissionTime();
     }
 
     public void StartGame()
@@ -40,7 +37,7 @@ public class GameManager : Singleton
         OnGameStart();
     }
 
-    public void StartMissionTime()
+    public void StartMissionTime(int missionSecs)
     {
         OnMissionTimeStart(missionSecs);
     }
