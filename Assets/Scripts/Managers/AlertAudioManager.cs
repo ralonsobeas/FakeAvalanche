@@ -11,7 +11,7 @@ public class AlertAudioManager : MonoBehaviour
         alertTooFarFromObjective,
         firstAlertToDie,
         secondAlertToDie; 
-    void Start()
+    void Awake()
     {
         ((GameManager)GameManager.Instance).OnFireAlert += FireAlert;
     }

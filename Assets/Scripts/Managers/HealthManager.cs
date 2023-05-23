@@ -16,10 +16,15 @@ public class HealthManager : MonoBehaviour
     private int invokeCounter = 0;
     [Range(0, 1)] public float percentageDecreaseTime = 0.3f;
     private Boolean firstTimeToFogGlasses = true;
-    void Start()
+
+    private void Awake()
     {
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
         ((GameManager)GameManager.Instance).OnDecreaseLife += BreakGlasses;
+    }
+
+    void Start()
+    {
         CallInvokeFogGlasses();
         glassess_initialState.SetActive(true);
     }

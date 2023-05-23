@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,17 @@ using UnityEngine;
 public class AmbientSoundManager : MonoBehaviour
 {
     public AudioSource windSource;
-    void Start()
+
+    private void Awake()
     {
-        StartAmbientSource();
         ((GameManager)GameManager.Instance).OnGameStart += StartWindAmbient;
         ((GameManager)GameManager.Instance).OnEnterInAmbient += EnterInAmbient;
         ((GameManager)GameManager.Instance).OnLeaveAmbient += LeaveAmbient;
-       
+    }
+
+    void Start()
+    {
+        StartAmbientSource();
     }
 
     void StartAmbientSource()
@@ -22,6 +27,7 @@ public class AmbientSoundManager : MonoBehaviour
 
     public void StartWindAmbient()
     {
+        Debug.Log("arranco viento");
         windSource.Play();
     }
 
