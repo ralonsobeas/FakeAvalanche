@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<<< HEAD:Assets/Resources/Cloud_Mat.mat.meta
+<<<<<<< HEAD
 guid: 4e543e9314f9f2f4c8ea6782ee9e8015
+=======
+guid: 78666cf9614d9264b9c9578e30cf2149
+>>>>>>> 9e7caf46509a415d98a2a159f011a18edfd12a2c
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
