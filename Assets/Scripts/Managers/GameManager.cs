@@ -33,6 +33,9 @@ public class GameManager : Singleton
     public event OnStart OnLoseMission;
 
     public event OnStart OnVictimIsDied;
+    
+    // victim events
+    public event OnStart OnVictimIsRescued;
     // alert events
     public event OnAlert OnFireAlert;
 
@@ -99,6 +102,11 @@ public class GameManager : Singleton
     public void VictimIsDied()
     {
         OnVictimIsDied();
+    }
+    
+    public void VictimIsRescued()
+    {
+        OnVictimIsRescued();
     }
 
 }
