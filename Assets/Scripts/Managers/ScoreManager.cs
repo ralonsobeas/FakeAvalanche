@@ -37,8 +37,9 @@ public class ScoreManager : MonoBehaviour
         score += GetHealthScore();
         // time score
         score += GetTimeScore(secs);
-        // flags score
+        // victim rescued score
         score += GetVictimScore();
+        // TODO: flags score
     }
 
     private void DecreaseLife()
