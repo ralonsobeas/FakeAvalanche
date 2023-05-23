@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1243452123869934281}
   - component: {fileID: 2472665759207416783}
   - component: {fileID: 540148463511060339}
+  - component: {fileID: 5108889423457010544}
+  - component: {fileID: 2446004891378499655}
   m_Layer: 0
   m_Name: MissionManagers
   m_TagString: Untagged
@@ -115,3 +117,31 @@ MonoBehaviour:
   sfxFinalAudioAlert: {fileID: 8300000, guid: 841c8cc5a54094be6a8df5518f74fcc6, type: 3}
   mainSource: {fileID: 0}
   leftSource: {fileID: 0}
+--- !u!114 &5108889423457010544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f5e55c4883f4902a39c3486b035db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windSource: {fileID: 0}
+--- !u!114 &2446004891378499655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b3b42ffe8ca044e3b3e2f9507e2df3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victimWithLifeRescued: {fileID: 8300000, guid: 0c3c64b0e60d743ff8d2e2c8f9412a47, type: 3}
+  victimDiedRescued: {fileID: 8300000, guid: 6e32a4e6f88794400a7420282e1a06b5, type: 3}
+  isDied: 0
