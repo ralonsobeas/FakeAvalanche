@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioClip musicGame, sfxHurt, sfxDie, sfxCleanGlasses;
+    public AudioClip musicGame, sfxHurt, sfxDie, sfxCleanGlasses, sfxInitialAudioAlert, sfxFinalAudioAlert;
     
     
     public AudioSource mainSource, leftSource;
@@ -36,9 +36,16 @@ public class MusicManager : MonoBehaviour
         {
             if (leftSource.isPlaying)
             {
+                queueClips.AddFirst(sfxFinalAudioAlert);
+                queueClips.AddFirst(clip);
+                queueClips.AddFirst(sfxInitialAudioAlert);
                 currentTimeAudioClip = leftSource.time;
+                
             }
-            queueClips.AddFirst(clip);
+            else
+            {
+                queueClips.AddFirst(clip);
+            }
         }
         else
         {
