@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1243452123869934322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1243452123869934284}
+  - component: {fileID: 1243452123869934287}
+  - component: {fileID: 1243452123869934286}
+  - component: {fileID: 1243452123869934281}
+  - component: {fileID: 2472665759207416783}
+  - component: {fileID: 540148463511060339}
+  m_Layer: 0
+  m_Name: MissionManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1243452123869934284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 37.518116, y: 14.127249, z: 36.786106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243452123869934287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870bedf23b92d491c897df99226912c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstAlertToDie: 300
+  secondAlertToDie: 600
+  missionSecs: 900
+--- !u!114 &1243452123869934286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a41a216093c41c78ee2e7c47c76676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alertDecreaseLife: {fileID: 8300000, guid: ea1959baafae642919d0950a8af48aeb, type: 3}
+  alertVictimProbablyIsDied: {fileID: 8300000, guid: 44a30d783352d4b539061b02fd551841, type: 3}
+  alertFogGlasses: {fileID: 8300000, guid: 88ef944791ac44de4b4e4a9b7f5451eb, type: 3}
+  alertTooFarFromObjective: {fileID: 8300000, guid: 15c771cd560954058a589b62f2d598a6, type: 3}
+  firstAlertToDie: {fileID: 8300000, guid: b49ecbfd4ad8742e38fd74d877767ef0, type: 3}
+  secondAlertToDie: {fileID: 8300000, guid: 3fed91e4e17814e12a4913531c41566c, type: 3}
+--- !u!114 &1243452123869934281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d68d2bab8624a6ba843b108620f34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  restPointsPerLife: 50
+--- !u!114 &2472665759207416783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668c7f607a6674183905438d20877ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &540148463511060339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243452123869934322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047524368b01348b2b11596a96e1783c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicGame: {fileID: 0}
+  sfxHurt: {fileID: 0}
+  sfxDie: {fileID: 0}
+  sfxCleanGlasses: {fileID: 0}
+  sfxInitialAudioAlert: {fileID: 8300000, guid: 88fc28e9c954042379bd492a3dcd247c, type: 3}
+  sfxFinalAudioAlert: {fileID: 8300000, guid: 841c8cc5a54094be6a8df5518f74fcc6, type: 3}
+  mainSource: {fileID: 0}
+  leftSource: {fileID: 0}
