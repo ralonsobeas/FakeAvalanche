@@ -36,6 +36,10 @@ public class GameManager : Singleton
     
     // victim events
     public event OnStart OnVictimIsRescued;
+    
+    // flag events
+    public event OnStart OnPlantFlag;
+    
     // alert events
     public event OnAlert OnFireAlert;
 
@@ -107,6 +111,11 @@ public class GameManager : Singleton
     public void VictimIsRescued()
     {
         OnVictimIsRescued();
+    }
+
+    public void PlantFlag()
+    {
+        OnPlantFlag();
     }
 
 }

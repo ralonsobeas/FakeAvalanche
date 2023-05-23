@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
@@ -10,12 +11,27 @@ public class ScoreManager : MonoBehaviour
     private int missionTime;
     private bool victimIsDied;
     private double healthScore = 0;
+    private int flagsPlanted = 0;
+
+    private void Awake()
+    {
+        ((GameManager)GameManager.Instance).OnPlantFlag += PlantFlag;
+    }
+
     void Start()
     {
         ((GameManager)GameManager.Instance).OnMissionTimeStart += MissionStart;
         ((GameManager)GameManager.Instance).OnDecreaseLife += DecreaseLife;
         ((GameManager)GameManager.Instance).OnWinMission += MissionFinish;
         ((GameManager)GameManager.Instance).OnVictimIsDied += VictimIsDied;
+    }
+
+    private void PlantFlag()
+    {
+        if (flagsPlanted < 30)
+        {
+            flagsPlanted++;
+        }
     }
 
     private void MissionStart(int missionSecs)
@@ -75,5 +91,10 @@ public class ScoreManager : MonoBehaviour
     private double GetVictimScore()
     {
         return victimIsDied ? 0 : 500;
+    }
+
+    private double GetFlagsScore()
+    {
+        return flagsPlanted * 10;
     }
 }

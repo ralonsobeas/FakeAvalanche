@@ -28,7 +28,11 @@ public class FlagRemove : MonoBehaviour
 
     public void grounded()
     {
-        if(isGrounded) GameObject.Instantiate(completeFlag, this.transform.position, Quaternion.identity);
+        if(isGrounded)
+        {
+            GameObject.Instantiate(completeFlag, this.transform.position, Quaternion.identity);
+            ((GameManager)GameManager.Instance).PlantFlag();
+        }
 
         this.transform.SetParent(cinturonParent);
         this.transform.position = initialBeltPosition;
