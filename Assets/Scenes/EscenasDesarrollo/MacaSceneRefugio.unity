@@ -12430,7 +12430,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2504210627321153123}
   m_HandleRect: {fileID: 2504210627321153122}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14358,7 +14358,7 @@ MonoBehaviour:
   head:
     vrTarget: {fileID: 5325122099913724370}
     IKTarget: {fileID: 627759636}
-    trackingPositionOffset: {x: 0, y: -0.14, z: -0.22}
+    trackingPositionOffset: {x: 0, y: -0.1, z: 0}
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   leftHand:
     vrTarget: {fileID: 608480737}
@@ -14372,7 +14372,7 @@ MonoBehaviour:
     trackingRotationOffset: {x: 0, y: -90, z: -90}
   turnSmoothness: 5
   IKHead: {fileID: 627759636}
-  headBodyOffset: {x: 0, y: -2.8, z: 0}
+  headBodyOffset: {x: 0, y: -3.1, z: 0}
 --- !u!20 &6353673031471403403 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2968975855893992255, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
@@ -14397,6 +14397,10 @@ PrefabInstance:
       propertyPath: head.trackingPositionOffset.y
       value: -0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1529805473682784473, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: head.trackingPositionOffset.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1529805473682784478, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14413,17 +14417,41 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2307929783583215325, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_MinHeight
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4105469133865374566, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4105469133865374566, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.108
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728521228236046605, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4728521228236046605, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7118016990837376215, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118016990837376215, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118016990837376215, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7118016990837376215, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7118016990837376215, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
       propertyPath: m_LocalPosition.x
