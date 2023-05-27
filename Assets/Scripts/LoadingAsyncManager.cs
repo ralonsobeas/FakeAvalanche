@@ -21,6 +21,7 @@ public class LoadingAsyncManager : MonoBehaviour
     public float percent;
     private void Start()
     {
+
         soundSource.PlayOneShot(helicopterClip);
         start = transform.position;
 
