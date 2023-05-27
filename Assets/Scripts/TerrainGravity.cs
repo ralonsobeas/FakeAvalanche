@@ -55,6 +55,8 @@ public class TerrainGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stabilityTerrain == null)
+            return;
         print("Terrain Stability: ");
         print(stabilityTerrain.SampleHeight(transform.position) > 10f);
         if (!meCaio && transform.position.y - getHeight() > maxStepHeight && stabilityTerrain.SampleHeight(transform.position) < 10f)

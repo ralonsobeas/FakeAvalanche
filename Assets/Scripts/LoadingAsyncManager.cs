@@ -22,6 +22,7 @@ public class LoadingAsyncManager : MonoBehaviour
     public float percent;
     private void Start()
     {
+
         soundSource.PlayOneShot(helicopterClip);
         start = transform.position;
 
@@ -42,7 +43,7 @@ public class LoadingAsyncManager : MonoBehaviour
     IEnumerator LoadYourAsyncScene()
     {
         OnLoadEvent.OnLoad();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(LoadingLevelName.NextLevelName);
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)

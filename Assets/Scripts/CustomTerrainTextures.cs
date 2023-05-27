@@ -102,7 +102,7 @@ public class CustomTextureArray
             Directory.CreateDirectory(dirPath);
         }
 
-        UnityEditor.AssetDatabase.CreateAsset(_texture, "Assets/Resources/CustomTerrainShaderTextures/" + name + ".asset");
+        //UnityEditor.AssetDatabase.CreateAsset(_texture, "Assets/Resources/CustomTerrainShaderTextures/" + name + ".asset");
 #endif
         return "CustomTerrainShaderTextures/" + name;
     }

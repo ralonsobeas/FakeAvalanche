@@ -34,7 +34,12 @@ public class ButtonEscucharMail : MonoBehaviour
         {
             changeBgColor(Color.green);
 
-            messageSound.PlayOneShot(messageClip);
+
+            //Si esta playing no lanzar audio
+            if (!messageSound.isPlaying)
+            {
+                messageSound.PlayOneShot(messageClip);
+            }
         }
     }
 

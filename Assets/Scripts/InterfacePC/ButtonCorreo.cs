@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class ButtonCorreo : MonoBehaviour
 {
+
+    public InterfaceManager interfaceManager;
+
     public GameObject pagesContainer;
     private void OnTriggerEnter(Collider other)
     {
