@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/EscenasDesarrollo/RodrigoSceneRefugio.unity
+    path: Assets/Scenes/EscenasDesarrollo/NOTOCAR_RodrigoSceneRefugio.unity
     guid: e63c2e048e33d0d4f9618dc9a5d4d24b
   - enabled: 1
     path: Assets/Scenes/Loading.unity
