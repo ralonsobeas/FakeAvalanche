@@ -60,9 +60,9 @@ public class ButtonTravelMail : MonoBehaviour
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
-        LoadingAsyncManager.scene = sceneName;
+        LoadingAsyncManager.scene = levelSceneName;
         OnLoadEvent.OnLoad();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Loading");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(loadingSceneName);
         
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)

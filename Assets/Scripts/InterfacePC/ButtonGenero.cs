@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86;
+using UnityEngine.Events;
 
 public class ButtonGenero: MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class ButtonGenero: MonoBehaviour
 
     public AudioClip messageClip;
     public AudioSource messageSound;
+
+    public static UnityEvent<int> onChangeGenre;
+
     private void OnTriggerEnter(Collider other)
     {
     
@@ -23,11 +27,13 @@ public class ButtonGenero: MonoBehaviour
             Debug.Log("CAMBIO MUJER");
             avatarHombre.SetActive(false);
             avatarMujer.SetActive(true);
+            onChangeGenre.Invoke(0);
         }else if (avatarMujer.active)
         {
             Debug.Log("CAMBIO HOMBRE");
             avatarHombre.SetActive(true);
             avatarMujer.SetActive(false);
+            onChangeGenre.Invoke(1);
         }
     }
 }
