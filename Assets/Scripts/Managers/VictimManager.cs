@@ -9,7 +9,7 @@ public class VictimManager : MonoBehaviour
 
     public bool isDied;
 
-    private void Awake()
+    private void Start()
     {
         ((GameManager)GameManager.Instance).OnVictimIsDied += VictimIsDied;
     }

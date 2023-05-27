@@ -34,8 +34,9 @@ public class FlagRemove : MonoBehaviour
             ((GameManager)GameManager.Instance).PlantFlag();
         }
 
+        this.transform.position = cinturonParent.position + initialBeltPosition;
+        this.transform.rotation = Quaternion.identity;
         this.transform.SetParent(cinturonParent);
-        this.transform.position = initialBeltPosition;
     }
 
     private void OnTriggerEnter(Collider other)

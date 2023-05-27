@@ -10,7 +10,6 @@ public class Arva : MonoBehaviour
 {
     protected Transform playerPos;
 
-    [SerializeField]
     protected Transform victimPos;
 
     [SerializeField]
@@ -22,15 +21,30 @@ public class Arva : MonoBehaviour
     [SerializeField]
     private Sprite[] arrows;
 
-    protected bool power = true;
+    protected bool power = false;
     private float actualAngle;
 
     private void Start()
     {
         arvaArrow.sprite = arrows[0];
         arvaNumber.text = "99999";
-        playerPos = this.transform;
+        playerPos = transform;
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
     }
+
+    private void OnLoadedRefugio()
+    {
+        enabled = false;
+    }
+
+    private void OnLoadedMission()
+    {
+        enabled = true;
+        victimPos = GameObject.FindGameObjectWithTag("Victim").transform;
+    }
+
+    public void SetPower(bool ok) => power = ok;
 
     private void Update()
     {

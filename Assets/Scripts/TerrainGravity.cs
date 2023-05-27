@@ -24,21 +24,26 @@ public class TerrainGravity : MonoBehaviour
     void Awake()
     {
         
-        OnLoadEvent.onLoaded.AddListener(OnLoaded);
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
     }
 
-    private void OnLoaded()
+    private void OnLoadedRefugio()
+    {
+        enabled = false;
+        GetComponent<CustomContinuousMoveProvider>().enabled = false;
+        ActionBasedContinuousMoveProvider actionProvider = GetComponent<ActionBasedContinuousMoveProvider>();
+        actionProvider.enabled = true;
+        GetComponent<CharacterControllerDriver>().locomotionProvider = actionProvider;
+    }
+
+    private void OnLoadedMission()
     {
         bool isSnow = FindObjectOfType<TerrainSnowManager>() != null;
-        print(isSnow);
-        enabled = isSnow;
         CustomContinuousMoveProvider customProvider = GetComponent<CustomContinuousMoveProvider>();
-        customProvider.enabled = isSnow;
-        ActionBasedContinuousMoveProvider actionProvider = GetComponent<ActionBasedContinuousMoveProvider>();
-        actionProvider.enabled = !isSnow;
-        GetComponent<CharacterControllerDriver>().locomotionProvider = isSnow ? customProvider : actionProvider;
-
-        if (!isSnow) return;
+        customProvider.enabled = true;
+        GetComponent<ActionBasedContinuousMoveProvider>().enabled = false;
+        GetComponent<CharacterControllerDriver>().locomotionProvider = customProvider;
 
         trails = FindObjectsOfType<TimedTrailRenderer>();
         snowHeightMap = FindObjectOfType<Terrain>().terrainData.alphamapTextures[0];

@@ -46,9 +46,7 @@ public class ButtonTravelMail : MonoBehaviour
      */
     private void changeBgColor(Color color)
     {
-        var colors = GetComponent<Button>().colors;
-        colors.normalColor = color;
-        GetComponent<Button>().colors = colors;
+        GetComponent<Image>().color = color;
     }
 
     [ContextMenu("LoadScene")]
@@ -60,8 +58,9 @@ public class ButtonTravelMail : MonoBehaviour
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
+        LoadingAsyncManager.scene = sceneName;
         OnLoadEvent.OnLoad();
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Loading");
         
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)

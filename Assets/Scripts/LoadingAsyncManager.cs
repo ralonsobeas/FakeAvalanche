@@ -8,7 +8,7 @@ public class LoadingAsyncManager : MonoBehaviour
 {
     private float time = 0;
     public float timeToStartLoading = 3;
-    public string scene;
+    public static string scene;
 
     private bool loadedOnce = false;
     // Update is called once per frame

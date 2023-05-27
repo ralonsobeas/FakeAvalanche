@@ -13,13 +13,14 @@ public class ScoreManager : MonoBehaviour
     private double healthScore = 0;
     private int flagsPlanted = 0;
 
-    private void Awake()
-    {
-        ((GameManager)GameManager.Instance).OnPlantFlag += PlantFlag;
-    }
+    //private void Awake()
+    //{
+        
+    //}
 
     void Start()
     {
+        ((GameManager)GameManager.Instance).OnPlantFlag += PlantFlag;
         ((GameManager)GameManager.Instance).OnMissionTimeStart += MissionStart;
         ((GameManager)GameManager.Instance).OnDecreaseLife += DecreaseLife;
         ((GameManager)GameManager.Instance).OnWinMission += MissionFinish;

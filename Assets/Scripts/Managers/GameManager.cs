@@ -50,72 +50,86 @@ public class GameManager : Singleton
 
     public void StartGame()
     {
-        OnGameStart();
+        if (OnGameStart != null)
+            OnGameStart();
     }
 
     public void StartMissionTime(int missionSecs)
     {
-        OnMissionTimeStart(missionSecs);
+        if (OnMissionTimeStart != null)
+            OnMissionTimeStart(missionSecs);
     }
 
     public void DecreaseLife()
     {
-        OnDecreaseLife();
+        if (OnDecreaseLife != null)
+            OnDecreaseLife();
     }
 
     public void Die()
     {
-        OnDie();
+        if (OnDie != null)
+            OnDie();
     }
 
     public void CleanGlasses()
     {
-        OnCleanGlasses();
+        if (OnCleanGlasses != null)
+            OnCleanGlasses();
     }
 
     public void PlayMissionClip(AudioClip clip, Boolean alert)
     {
-        OnPlayMissionClip(clip, alert);
+        if (OnPlayMissionClip != null)
+            OnPlayMissionClip(clip, alert);
     }
 
     public void EnterInAmbient(AudioSource ambientSource)
     {
-        OnEnterInAmbient(ambientSource);
+        if (OnEnterInAmbient != null)
+            OnEnterInAmbient(ambientSource);
     }
 
     public void LeaveAmbient(AudioSource ambientSource)
     {
-        OnLeaveAmbient(ambientSource);
+        if (OnLeaveAmbient != null)
+            OnLeaveAmbient(ambientSource);
     }
 
     public void FireAlert(Alert alert)
     {
-        OnFireAlert(alert);
+        if (OnFireAlert != null)
+            OnFireAlert(alert);
     }
 
     public void WinMission(int secs)
     {
-        OnWinMission(secs);
+        if (OnWinMission != null)
+            OnWinMission(secs);
     }
 
     public void LoseMission()
     {
-        OnLoseMission();
+        if (OnLoseMission != null)
+            OnLoseMission();
     }
 
     public void VictimIsDied()
     {
-        OnVictimIsDied();
+        if (OnVictimIsDied != null)
+            OnVictimIsDied();
     }
     
     public void VictimIsRescued()
     {
-        OnVictimIsRescued();
+        if (OnVictimIsRescued != null)
+            OnVictimIsRescued();
     }
 
     public void PlantFlag()
     {
-        OnPlantFlag();
+        if (OnPlantFlag != null)
+            OnPlantFlag();
     }
 
 }

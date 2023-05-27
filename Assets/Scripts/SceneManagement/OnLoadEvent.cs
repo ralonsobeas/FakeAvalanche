@@ -12,6 +12,10 @@ public class OnLoadEvent : MonoBehaviour
 {
     public static UnityEvent onLoad = new UnityEvent();
     public static UnityEvent onLoaded = new UnityEvent();
+    public static UnityEvent onLoadedMission = new UnityEvent();
+    public static UnityEvent onLoadedRefugio = new UnityEvent();
+
+    public static bool isMission;
 
     /// <summary>
     /// Si es false, las llamadas a onLoaded se ignoran.
@@ -21,13 +25,16 @@ public class OnLoadEvent : MonoBehaviour
 
     private void Start()
     {
-
-            
+        isMission = FindObjectOfType<TerrainSnowManager>() != null;
         if (isLoading)
         {
             isLoading = false;
             onLoaded.Invoke();
+            if (isMission)
+                onLoadedMission.Invoke();
         }
+        if (!isMission)
+            onLoadedRefugio.Invoke();
     }
 
     public static void OnLoad()

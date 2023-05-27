@@ -19,6 +19,18 @@ public class HealthManager : MonoBehaviour
 
     private void Awake()
     {
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
+    }
+
+    private void OnLoadedRefugio()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnLoadedMission()
+    {
+        gameObject.SetActive(true);
         ((GameManager)GameManager.Instance).OnGameStart += EquipGlasses;
         ((GameManager)GameManager.Instance).OnDecreaseLife += BreakGlasses;
     }

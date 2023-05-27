@@ -3,12 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+//4:30 ha llegado
 public class ShopItem : MonoBehaviour
 {
     [SerializeField] private int price;
 
     [SerializeField] private GameObject cantAffordFeedback;
     [SerializeField] private TMPro.TextMeshProUGUI priceLabel;
+
+    private static List<string> items = new List<string>();
+    private bool instantDestroy = false;
+
+    private void Awake()
+    {
+        if (items.Contains(name))
+        {
+            instantDestroy = true;
+            Destroy(gameObject);
+        }
+        else
+            items.Add(name);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +60,10 @@ public class ShopItem : MonoBehaviour
             cantAffordFeedback.SetActive(true);
     }
 
-    //private void OnDestroy()
-    //{
-    //    GetComponent<XRGrabInteractable>().selectEntered;
-    //}
+    private void OnDestroy()
+    {
+        //GetComponent<XRGrabInteractable>().selectEntered;
+        if (!instantDestroy && items.Contains(name))
+            items.Remove(name);
+    }
 }
