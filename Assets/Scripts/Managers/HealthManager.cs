@@ -110,12 +110,4 @@ public class HealthManager : MonoBehaviour
     {
         glasses_image_states[position].SetActive(true);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == objectToCleanGlasses.name)
-        {
-            CleanGlasses();
-        }
-    }
 }

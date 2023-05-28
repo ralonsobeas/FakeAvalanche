@@ -12,7 +12,7 @@ public class ButtonGenero: MonoBehaviour
     public AudioClip messageClip;
     public AudioSource messageSound;
 
-    public static UnityEvent<int> onChangeGenre;
+    public static UnityEvent<int> onChangeGenre = new UnityEvent<int>();
 
     private void OnTriggerEnter(Collider other)
     {

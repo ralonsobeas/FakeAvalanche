@@ -30,6 +30,7 @@ public class TerrainGravity : MonoBehaviour
 
     private void OnLoadedRefugio()
     {
+        //Debug.Log("Terrain establecido para refugio");
         enabled = false;
         GetComponent<CustomContinuousMoveProvider>().enabled = false;
         ActionBasedContinuousMoveProvider actionProvider = GetComponent<ActionBasedContinuousMoveProvider>();
@@ -39,6 +40,8 @@ public class TerrainGravity : MonoBehaviour
 
     private void OnLoadedMission()
     {
+        //Debug.Log("Terrain establecido para misión");
+        enabled = true;
         bool isSnow = FindObjectOfType<TerrainSnowManager>() != null;
         CustomContinuousMoveProvider customProvider = GetComponent<CustomContinuousMoveProvider>();
         customProvider.enabled = true;
@@ -57,8 +60,8 @@ public class TerrainGravity : MonoBehaviour
     {
         if (stabilityTerrain == null)
             return;
-        print("Terrain Stability: ");
-        print(stabilityTerrain.SampleHeight(transform.position) > 10f);
+        //print("Terrain Stability: ");
+        //print(stabilityTerrain.SampleHeight(transform.position) > 10f);
         if (!meCaio && transform.position.y - getHeight() > maxStepHeight && stabilityTerrain.SampleHeight(transform.position) < 10f)
         {
             Instantiate(lineTrailHole, transform.position, Quaternion.identity);
