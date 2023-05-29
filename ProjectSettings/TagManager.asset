@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Victim
+  - Index
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Herramientas
   - Avatar
   - Cinturon
-  - 
+  - Cabeza
   - 
   - 
   - 

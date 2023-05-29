@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-//4:30 ha llegado
 public class ShopItem : MonoBehaviour
 {
     [SerializeField] private int price;
@@ -29,11 +28,10 @@ public class ShopItem : MonoBehaviour
     void Start()
     {
         priceLabel.text = price + "€";
-        if (!Wallet.CanAffordMe(price))
-            CantAffordMe();
-
         if (PlayerPrefs.GetInt(name, 0) == 1)
             Sold();
+        else if (!Wallet.CanAffordMe(price))
+            CantAffordMe();
     }
 
     public void Buy()
@@ -65,5 +63,11 @@ public class ShopItem : MonoBehaviour
         //GetComponent<XRGrabInteractable>().selectEntered;
         if (!instantDestroy && items.Contains(name))
             items.Remove(name);
+    }
+
+    [ContextMenu("Reset")]
+    private void ResetShop()
+    {
+        PlayerPrefs.SetInt(name, 0);
     }
 }

@@ -13,6 +13,7 @@ public class ButtonCorreo : MonoBehaviour
     public GameObject pagesContainer;
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Index")) return;
         //Esconder todos los child
         foreach (Transform child in pagesContainer.transform)
         {

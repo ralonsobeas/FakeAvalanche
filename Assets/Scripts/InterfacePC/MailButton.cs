@@ -11,6 +11,7 @@ public class MailButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Index")) return;
         //StartCoroutine(MostrarBotonAudio(2));
         interfaceManager.mostrarBotonDelay(activeMailContainer.transform.Find("ButtonEscucharMensaje").gameObject);
         //Esconder todos los child

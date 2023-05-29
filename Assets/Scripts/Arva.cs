@@ -44,7 +44,7 @@ public class Arva : MonoBehaviour
         victimPos = GameObject.FindGameObjectWithTag("Victim").transform;
     }
 
-    public void SetPower(bool ok) => power = ok;
+    public void TogglePower() => power = !power;
 
     private void Update()
     {

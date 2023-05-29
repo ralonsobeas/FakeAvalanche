@@ -23,6 +23,7 @@ public class ButtonTravelMail : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {   // Layer herramientas
+        if (!other.CompareTag("Index")) return;
         if (other.gameObject.layer == 7)
         {
             changeBgColor(Color.green);
@@ -32,6 +33,7 @@ public class ButtonTravelMail : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Index")) return;
         // Layer avatar
         if (other.gameObject.layer == 7)
         {

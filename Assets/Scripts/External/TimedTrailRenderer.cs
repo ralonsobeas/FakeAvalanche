@@ -57,8 +57,26 @@ public class TimedTrailRenderer : MonoBehaviour
         public bool lineBreak = false;
     }
 
-    void Start()
+    private void Awake()
     {
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
+    }
+
+    private void OnLoadedRefugio()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnLoadedMission()
+    {   
+        foreach (Camera c in FindObjectsOfType<Camera>())
+            if (c.name == "TouchReactCamera")
+                touchReactCam = c;
+        foreach (Terrain t in FindObjectsOfType<Terrain>())
+            if (!t.name.Contains("Stability"))
+                terrain = t;
+        gameObject.SetActive(true);
         lastPosition = transform.position;
         o = new GameObject("Trail");
         o.transform.parent = null;
@@ -71,6 +89,12 @@ public class TimedTrailRenderer : MonoBehaviour
         o.transform.gameObject.layer = LayerMask.NameToLayer("TouchReact");
         layer_mask = LayerMask.GetMask("TouchReact", "Terain");
         mesh = (o.GetComponent(typeof(MeshFilter)) as MeshFilter).mesh;
+    }
+
+    private void OnDestroy()
+    {
+        OnLoadEvent.onLoadedRefugio.RemoveListener(OnLoadedRefugio);
+        OnLoadEvent.onLoadedMission.RemoveListener(OnLoadedMission);
     }
 
     void OnDisable()
