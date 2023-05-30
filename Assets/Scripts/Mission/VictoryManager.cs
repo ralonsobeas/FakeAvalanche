@@ -23,12 +23,13 @@ public class VictoryManager : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         //TODO: cambiar la condición de reconocimiento de pala
-        if(collision.gameObject.name == "Pala")
+        if(other.tag == "Index")
         {
             hasContacted = true;
+            ((GameManager)GameManager.Instance).VictimIsRescued();
         }
     }
     IEnumerator LoadYourAsyncScene()

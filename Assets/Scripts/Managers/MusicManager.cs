@@ -13,7 +13,13 @@ public class MusicManager : MonoBehaviour
     private LinkedList<AudioClip> queueClips;
     private Boolean isPreviousClipInQueue, isAudioAlert;
     private float currentTimeAudioClip;
-    
+
+
+    private void Awake()
+    {
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
+    }
+
     void Start()
     {
         ((GameManager)GameManager.Instance).OnDecreaseLife += StartSfxHurt;
@@ -22,6 +28,12 @@ public class MusicManager : MonoBehaviour
         ((GameManager)GameManager.Instance).OnPlayMissionClip += AddClipToQueue;
 
         queueClips = new LinkedList<AudioClip>();
+    }
+
+    private void OnLoadedMission()
+    {
+        mainSource = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioSource>();
+        leftSource = GameObject.FindGameObjectWithTag("WalkieAudio").GetComponent<AudioSource>();
     }
 
     public void StartSfxHurt()

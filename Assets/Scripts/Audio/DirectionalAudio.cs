@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UIElements;
 
 public class DirectionalAudio : MonoBehaviour
@@ -21,6 +22,17 @@ public class DirectionalAudio : MonoBehaviour
     private Boolean isLinkToAnotherReference;
 
     [SerializeField] private Transform linkTransformReference;
+
+    private void Awake()
+    {
+        OnLoadEvent.onLoadedMission.AddListener(OnLoadedMission);
+    }
+
+    private void OnLoadedMission()
+    {
+        audioListenerObject = FindObjectOfType<TrackedPoseDriver>().transform;
+    }
+
     private void Start()
     {
         if (isLinkToAnotherReference)

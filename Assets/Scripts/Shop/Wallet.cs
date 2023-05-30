@@ -25,7 +25,11 @@ public class Wallet : MonoBehaviour
 
     private void Awake()
     {
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
+    }
 
+    private void OnLoadedRefugio()
+    {
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -37,16 +41,11 @@ public class Wallet : MonoBehaviour
             messageSound.PlayOneShot(messageClip);
         }
 
+        moneyDisplay = GameObject.FindGameObjectWithTag("Saldo").GetComponent<TextMeshProUGUI>();
         coins = PlayerPrefs.GetInt("wallet", initialBalance);
         moneyDisplay.text = coins + "€";
         Instance = this;
-        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
         ScoreManager.score = coins;
-    }
-
-    private void OnLoadedRefugio()
-    {
-        moneyDisplay = GameObject.FindGameObjectWithTag("Saldo").GetComponent<TextMeshProUGUI>();
     }
 
     public static bool CanAffordMe(int price) => price <= coins;
