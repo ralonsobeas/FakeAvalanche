@@ -8998,7 +8998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingSceneName: Loading
-  levelSceneName: OscarScene Nivel 3
+  levelSceneName: Mission1
 --- !u!65 &871265182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13669,7 +13669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingSceneName: Loading
-  levelSceneName: OscarScene Nivel 3
+  levelSceneName: Mission1Noche
 --- !u!65 &1206943747
 BoxCollider:
   m_ObjectHideFlags: 0
