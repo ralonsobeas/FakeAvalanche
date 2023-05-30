@@ -6,7 +6,7 @@ using TMPro;
 public class Wallet : MonoBehaviour
 {
     [SerializeField][Tooltip("Debe ser el mismo en todos los wallet")] private int initialBalance = 10;
-    [SerializeField] private TextMeshProUGUI moneyDisplay;
+    private TextMeshProUGUI moneyDisplay;
     private static Wallet Instance;
     private static int coins;
 
@@ -15,6 +15,12 @@ public class Wallet : MonoBehaviour
         coins = PlayerPrefs.GetInt("wallet", initialBalance);
         moneyDisplay.text = coins + "€";
         Instance = this;
+        OnLoadEvent.onLoadedRefugio.AddListener(OnLoadedRefugio);
+    }
+
+    private void OnLoadedRefugio()
+    {
+        moneyDisplay = GameObject.FindGameObjectWithTag("Saldo").GetComponent<TextMeshProUGUI>();
     }
 
     public static bool CanAffordMe(int price) => price <= coins;

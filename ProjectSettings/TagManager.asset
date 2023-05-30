@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Victim
   - Index
+  - Saldo
   layers:
   - Default
   - TransparentFX

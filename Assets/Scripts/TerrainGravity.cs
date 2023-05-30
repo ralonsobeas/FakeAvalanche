@@ -62,7 +62,8 @@ public class TerrainGravity : MonoBehaviour
             return;
         //print("Terrain Stability: ");
         //print(stabilityTerrain.SampleHeight(transform.position) > 10f);
-        if (!meCaio && transform.position.y - getHeight() > maxStepHeight && stabilityTerrain.SampleHeight(transform.position) < 10f)
+        Debug.Log("Variables: meCaio=" + meCaio + ", getHeight=" + getHeight() + ", estoyEnCaio=" + (stabilityTerrain.SampleHeight(transform.position) < 10f) + ", mi Y=" + transform.position.y);
+        if (!meCaio && transform.position.y - getHeight() > maxStepHeight/10f && stabilityTerrain.SampleHeight(transform.position) < 10f)
         {
             Instantiate(lineTrailHole, transform.position, Quaternion.identity);
             ((GameManager)GameManager.Instance).DecreaseLife();
