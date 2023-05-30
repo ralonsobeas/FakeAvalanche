@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.24539863, g: 0.3462945, b: 0.4703009, a: 1}
+  m_IndirectSpecularColor: {r: 0.24547386, g: 0.34645045, b: 0.47000217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8d266c3b725724f82f5b33b8770798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageClip: {fileID: 8300000, guid: 497cccdd060f98244bf693b14a071da3, type: 3}
+  messageClip: {fileID: 8300000, guid: 251ac8e0ddb32434c96c13a6fc37d5c2, type: 3}
   messageSound: {fileID: 578117430}
 --- !u!54 &578117432
 Rigidbody:
@@ -8574,7 +8574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8d266c3b725724f82f5b33b8770798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageClip: {fileID: 8300000, guid: 497cccdd060f98244bf693b14a071da3, type: 3}
+  messageClip: {fileID: 8300000, guid: 788db9e2db39d4f6b94106e8e648e2d3, type: 3}
   messageSound: {fileID: 885050670}
 --- !u!54 &885050672
 Rigidbody:
