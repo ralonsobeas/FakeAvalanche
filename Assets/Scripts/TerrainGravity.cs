@@ -47,12 +47,17 @@ public class TerrainGravity : MonoBehaviour
         customProvider.enabled = true;
         GetComponent<ActionBasedContinuousMoveProvider>().enabled = false;
         GetComponent<CharacterControllerDriver>().locomotionProvider = customProvider;
-
-        trails = FindObjectsOfType<TimedTrailRenderer>();
         snowHeightMap = FindObjectOfType<Terrain>().terrainData.alphamapTextures[0];
         foreach (Terrain t in FindObjectsOfType<Terrain>())
             if (t.name.Contains("Stability"))
                 stabilityTerrain = t;
+
+        Invoke("OnLoadedMissionDelayed", 1f);
+    }
+
+    private void OnLoadedMissionDelayed()
+    {
+        trails = FindObjectsOfType<TimedTrailRenderer>();
     }
 
     // Update is called once per frame
@@ -83,6 +88,7 @@ public class TerrainGravity : MonoBehaviour
         for (int i = 0; i < trails.Length; i++)
         {
             hasTrail = trails[i].getHeight(transform.position, out y);
+            Debug.Log("ESTO ES INTERMEDIO: " + hasTrail);
             if (hasTrail && minHeight > y)
                 minHeight = y;
         }
@@ -98,6 +104,7 @@ public class TerrainGravity : MonoBehaviour
         redAddition /= 9;
         if (stabilityTerrain.SampleHeight(transform.position) < 10f)
             return Terrain.activeTerrain.SampleHeight(transform.position);
+        Debug.Log(hasTrail);
         Debug.Log(hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition + characterOffset : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition + characterOffset);
         return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition + characterOffset : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition + characterOffset;
     }

@@ -374,7 +374,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 110360225}
-  - component: {fileID: 110360226}
   m_Layer: 26
   m_Name: Trail
   m_TagString: Untagged
@@ -397,38 +396,6 @@ Transform:
   m_Father: {fileID: 727885687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &110360226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110360224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682d4e85579444844b0e49538e2130f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 0}
-  touchReactCam: {fileID: 7908121}
-  emit: 1
-  material: {fileID: 2100000, guid: 2699fb9cfe4da254b9fe56adb63638ab, type: 2}
-  ignorelifeTime: 1
-  lifeTime: 50
-  colors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 0}
-  sizes:
-  - 1
-  uvLengthScale: 0.01
-  higherQualityUVs: 0
-  movePixelsForRebuild: 6
-  maxRebuildTime: 0.1
-  minVertexDistance: 0.1
-  maxVertexDistance: 10
-  maxAngle: 3
-  autoDestruct: 0
-  isPhysics: 1
 --- !u!1001 &224525419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,7 +543,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!21 &337775739
+--- !u!21 &345038929
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -6007,7 +5974,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 337775739}
+  m_MaterialTemplate: {fileID: 345038929}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -6082,7 +6049,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591083896}
-  - component: {fileID: 591083897}
   m_Layer: 26
   m_Name: Trail
   m_TagString: Untagged
@@ -6105,38 +6071,6 @@ Transform:
   m_Father: {fileID: 543450652068821818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591083897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591083895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682d4e85579444844b0e49538e2130f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 558273762}
-  touchReactCam: {fileID: 7908121}
-  emit: 1
-  material: {fileID: 2100000, guid: 2699fb9cfe4da254b9fe56adb63638ab, type: 2}
-  ignorelifeTime: 1
-  lifeTime: 10
-  colors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 0}
-  sizes:
-  - 0.5
-  uvLengthScale: 0.01
-  higherQualityUVs: 0
-  movePixelsForRebuild: 6
-  maxRebuildTime: 0.1
-  minVertexDistance: 0.1
-  maxVertexDistance: 10
-  maxAngle: 3
-  autoDestruct: 0
-  isPhysics: 1
 --- !u!1 &644691355
 GameObject:
   m_ObjectHideFlags: 0
@@ -12828,7 +12762,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1541075721}
-  - component: {fileID: 1541075722}
   m_Layer: 26
   m_Name: Trail
   m_TagString: Untagged
@@ -12851,38 +12784,6 @@ Transform:
   m_Father: {fileID: 1533237087}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1541075722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541075720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682d4e85579444844b0e49538e2130f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 558273762}
-  touchReactCam: {fileID: 7908121}
-  emit: 1
-  material: {fileID: 2100000, guid: 2699fb9cfe4da254b9fe56adb63638ab, type: 2}
-  ignorelifeTime: 1
-  lifeTime: 10
-  colors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 0}
-  sizes:
-  - 1
-  uvLengthScale: 0.01
-  higherQualityUVs: 0
-  movePixelsForRebuild: 6
-  maxRebuildTime: 0.1
-  minVertexDistance: 0.1
-  maxVertexDistance: 10
-  maxAngle: 3
-  autoDestruct: 0
-  isPhysics: 1
 --- !u!1 &1551788882
 GameObject:
   m_ObjectHideFlags: 0
@@ -13098,7 +12999,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1611906874}
-  - component: {fileID: 1611906875}
   m_Layer: 26
   m_Name: Trail
   m_TagString: Untagged
@@ -13121,36 +13021,6 @@ Transform:
   m_Father: {fileID: 840885643}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611906875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611906873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682d4e85579444844b0e49538e2130f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 0}
-  touchReactCam: {fileID: 7908121}
-  emit: 1
-  material: {fileID: 2100000, guid: 2699fb9cfe4da254b9fe56adb63638ab, type: 2}
-  ignorelifeTime: 1
-  lifeTime: 10
-  colors: []
-  sizes:
-  - 1
-  uvLengthScale: 0.01
-  higherQualityUVs: 0
-  movePixelsForRebuild: 6
-  maxRebuildTime: 0.1
-  minVertexDistance: 0.1
-  maxVertexDistance: 10
-  maxAngle: 3
-  autoDestruct: 0
-  isPhysics: 1
 --- !u!1001 &1693197579
 PrefabInstance:
   m_ObjectHideFlags: 0
