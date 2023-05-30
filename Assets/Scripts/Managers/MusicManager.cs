@@ -32,8 +32,14 @@ public class MusicManager : MonoBehaviour
 
     private void OnLoadedMission()
     {
+        Invoke("OnLoadedMissionDelayed", 1f);
+    }
+
+    private void OnLoadedMissionDelayed()
+    {
         mainSource = GameObject.FindGameObjectWithTag("MainAudio").GetComponent<AudioSource>();
         leftSource = GameObject.FindGameObjectWithTag("WalkieAudio").GetComponent<AudioSource>();
+
     }
 
     public void StartSfxHurt()
@@ -98,6 +104,8 @@ public class MusicManager : MonoBehaviour
     }
     private void Update()
     {
+        if (leftSource == null) return;
+
         if (isAudioAlert && queueClips.Count > 0 )
         {
             PlayNextClipFromQueue();

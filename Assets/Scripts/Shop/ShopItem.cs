@@ -27,6 +27,11 @@ public class ShopItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("StartDelayed", 2f);
+    }
+
+    private void StartDelayed()
+    {
         priceLabel.text = price + "€";
         if (PlayerPrefs.GetInt(name, 0) == 1)
             Sold();

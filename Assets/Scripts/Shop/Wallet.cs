@@ -30,6 +30,10 @@ public class Wallet : MonoBehaviour
 
     private void OnLoadedRefugio()
     {
+        Invoke("OnLoadedRefugioDelayed", 1f);
+    }
+    private void OnLoadedRefugioDelayed()
+    {
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
 
@@ -43,9 +47,10 @@ public class Wallet : MonoBehaviour
 
         moneyDisplay = GameObject.FindGameObjectWithTag("Saldo").GetComponent<TextMeshProUGUI>();
         coins = PlayerPrefs.GetInt("wallet", initialBalance);
+        coins += (int)ScoreManager.score;
         moneyDisplay.text = coins + "€";
         Instance = this;
-        coins += (int)ScoreManager.score;
+        PlayerPrefs.SetInt("wallet", coins);
     }
 
     public static bool CanAffordMe(int price) => price <= coins;
@@ -61,6 +66,7 @@ public class Wallet : MonoBehaviour
     {
         if (!CanAffordMe(price)) throw new UnityException("Se supone que no puedes pagar esto");
         coins -= price;
+        PlayerPrefs.SetInt("wallet", coins);
         Instance.moneyDisplay.text = coins + "€";
         //ScoreManager.score = coins;
     }
