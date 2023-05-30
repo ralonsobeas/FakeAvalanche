@@ -576,6 +576,106 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!21 &337775739
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MyTerrain/BumpTerrainHeightBlend
+  m_Shader: {fileID: 4800000, guid: 86884e45a91d38b41a3b2f26362b3232, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Array1:
+        m_Texture: {fileID: 18700000, guid: 0e6aa3a8361041b4a8b53f4a1e59f593, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array10:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array11:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array12:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array2:
+        m_Texture: {fileID: 18700000, guid: 0875884715f350b4d9547c120c88178f, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array3:
+        m_Texture: {fileID: 18700000, guid: 6bd35da583040d74f988904a800d3c62, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array4:
+        m_Texture: {fileID: 18700000, guid: b989c0ba82c272844955bfaf183cc994, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array5:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array6:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array8:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Array9:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Control:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Control2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Control3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Blending: 0.15
+    - _ControlCount: 1
+    - _THeight: 128
+    - _TPosX: 0
+    - _TPosZ: 0
+    - _TWidth: 128
+    - _TessMultiplier: 5
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &345834515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -650,6 +750,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 345834515}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345834517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 345834515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &345834518
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345834517}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &358711320
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +895,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 383882204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &383882206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 383882204}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &383882207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383882206}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &415405279
 GameObject:
   m_ObjectHideFlags: 0
@@ -5865,7 +6007,7 @@ Terrain:
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 1959529432}
+  m_MaterialTemplate: {fileID: 337775739}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -11399,6 +11541,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7841120687613007319, guid: d3774fc25aba14dabbc9f75a7502786d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841120687613007319, guid: d3774fc25aba14dabbc9f75a7502786d, type: 3}
       propertyPath: rayColor.b
       value: 0.01883716
       objectReference: {fileID: 0}
@@ -12007,19 +12153,7 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1284464303}
-        m_TargetAssemblyTypeName: VictimManager, Assembly-CSharp
-        m_MethodName: VictimIsRescued
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -12267,17 +12401,6 @@ PrefabInstance:
       objectReference: {fileID: 961518591}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d96106d9c854f4186e394212360cb2, type: 3}
---- !u!114 &1284464303 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2446004891378499655, guid: 70d96106d9c854f4186e394212360cb2, type: 3}
-  m_PrefabInstance: {fileID: 1284464302}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3b42ffe8ca044e3b3e2f9507e2df3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1365000151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12401,6 +12524,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 1405658901}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1405658903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 1405658901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1405658904
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405658903}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1470428345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12471,6 +12615,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 1470428345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1470428347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 1470428345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1470428348
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470428347}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1475214717
 GameObject:
   m_ObjectHideFlags: 0
@@ -13052,6 +13217,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 1693197579}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1693197581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 1693197579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1693197582
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693197581}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1714794760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13322,106 +13508,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1959529432
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: MyTerrain/BumpTerrainHeightBlend
-  m_Shader: {fileID: 4800000, guid: 86884e45a91d38b41a3b2f26362b3232, type: 3}
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _Array1:
-        m_Texture: {fileID: 18700000, guid: 0e6aa3a8361041b4a8b53f4a1e59f593, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array10:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array11:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array12:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array2:
-        m_Texture: {fileID: 18700000, guid: 0875884715f350b4d9547c120c88178f, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array3:
-        m_Texture: {fileID: 18700000, guid: 6bd35da583040d74f988904a800d3c62, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array4:
-        m_Texture: {fileID: 18700000, guid: b989c0ba82c272844955bfaf183cc994, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array5:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array6:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array7:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array8:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Array9:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Control:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Control2:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Control3:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TerrainHolesTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _Blending: 0.15
-    - _ControlCount: 1
-    - _THeight: 128
-    - _TPosX: 0
-    - _TPosZ: 0
-    - _TWidth: 128
-    - _TessMultiplier: 5
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1960097219
 GameObject:
   m_ObjectHideFlags: 0
@@ -13695,6 +13781,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1916547709}
     m_Modifications:
     - target: {fileID: 3041146214867734324, guid: 5f6a77b13c7a9424a8987288638d4c8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041146214867734324, guid: 5f6a77b13c7a9424a8987288638d4c8e, type: 3}
       propertyPath: audioListenerObject
       value: 
       objectReference: {fileID: 0}
@@ -13902,6 +13992,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 40189140500464625, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
   m_PrefabInstance: {fileID: 2114528869}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2114528871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 40189140500464626, guid: 1d7b686fc6db34132ae1a40e14d763e2, type: 3}
+  m_PrefabInstance: {fileID: 2114528869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2114528872
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114528871}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2140918434
 GameObject:
   m_ObjectHideFlags: 0
@@ -14017,6 +14128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1916547709}
     m_Modifications:
+    - target: {fileID: 3041146214867734324, guid: 5f6a77b13c7a9424a8987288638d4c8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3041146214867734324, guid: 5f6a77b13c7a9424a8987288638d4c8e, type: 3}
       propertyPath: audioListenerObject
       value: 

@@ -12,6 +12,8 @@ public class VictimManager : MonoBehaviour
     private void Start()
     {
         ((GameManager)GameManager.Instance).OnVictimIsDied += VictimIsDied;
+        ((GameManager)GameManager.Instance).OnVictimIsRescued += VictimIsRescued;
+
     }
 
     void VictimIsDied()

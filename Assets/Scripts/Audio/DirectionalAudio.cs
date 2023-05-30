@@ -30,7 +30,13 @@ public class DirectionalAudio : MonoBehaviour
 
     private void OnLoadedMission()
     {
-        audioListenerObject = FindObjectOfType<TrackedPoseDriver>().transform;
+        Invoke("OnLoadedMissionDelayed", 1f);
+    }
+
+    private void OnLoadedMissionDelayed()
+    {
+        audioListenerObject = Camera.main.transform;
+
     }
 
     private void Start()
