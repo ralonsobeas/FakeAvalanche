@@ -20131,6 +20131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialBalance: 100
+  messageClip: {fileID: 8300000, guid: f8425028b5b42434c94d31cf5d9d1190, type: 3}
+  messageSound: {fileID: 49423614}
+  nameSceneRefugio: MacaSceneRefugio
 --- !u!114 &1429728536823744137
 MonoBehaviour:
   m_ObjectHideFlags: 0
