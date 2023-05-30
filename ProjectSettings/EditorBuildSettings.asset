@@ -20,6 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Missions/Mission1.unity
     guid: b142181419f014188af4cfd03dae13b1
+  - enabled: 1
+    path: Assets/Scenes/Missions/Mission1Noche.unity
+    guid: 934bc264dcfaa2e419da4723f8bc7cbc
+  - enabled: 1
+    path: Assets/Scenes/EscenasDesarrollo/OscarScene.unity
+    guid: 4c47d9ef2127f5642ac7890548f6ac89
+  - enabled: 1
+    path: Assets/Scenes/EscenasDesarrollo/OscarScene Nivel 2.unity
+    guid: 34ceb81a31bfe12488351cd18808ec24
+  - enabled: 1
+    path: Assets/Scenes/EscenasDesarrollo/OscarScene Nivel 3.unity
+    guid: 1de30806fc3215940a68bff3dc015603
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 114e10aad8f9fd44bab0d285ad212379, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 08cea65de2a51f24a96234847ee06719, type: 2}
