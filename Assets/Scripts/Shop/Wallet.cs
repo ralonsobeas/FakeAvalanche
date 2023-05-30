@@ -45,7 +45,7 @@ public class Wallet : MonoBehaviour
         coins = PlayerPrefs.GetInt("wallet", initialBalance);
         moneyDisplay.text = coins + "€";
         Instance = this;
-        ScoreManager.score = coins;
+        coins += (int)ScoreManager.score;
     }
 
     public static bool CanAffordMe(int price) => price <= coins;
@@ -54,7 +54,7 @@ public class Wallet : MonoBehaviour
     private void ResetWallet()
     {
         PlayerPrefs.SetInt("wallet", initialBalance);
-        ScoreManager.score = initialBalance;
+        //ScoreManager.score = initialBalance;
     }
 
     public static void Pay(int price)
@@ -62,7 +62,7 @@ public class Wallet : MonoBehaviour
         if (!CanAffordMe(price)) throw new UnityException("Se supone que no puedes pagar esto");
         coins -= price;
         Instance.moneyDisplay.text = coins + "€";
-        ScoreManager.score = coins;
+        //ScoreManager.score = coins;
     }
 
     private void OnDestroy()
