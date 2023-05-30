@@ -62,7 +62,7 @@ public class TerrainGravity : MonoBehaviour
             return;
         //print("Terrain Stability: ");
         //print(stabilityTerrain.SampleHeight(transform.position) > 10f);
-        Debug.Log("Variables: meCaio=" + meCaio + ", getHeight=" + getHeight() + ", estoyEnCaio=" + (stabilityTerrain.SampleHeight(transform.position) < 10f) + ", mi Y=" + transform.position.y);
+        //Debug.Log("Variables: meCaio=" + meCaio + ", getHeight=" + getHeight() + ", estoyEnCaio=" + (stabilityTerrain.SampleHeight(transform.position) < 10f) + ", mi Y=" + transform.position.y);
         if (!meCaio && transform.position.y - getHeight() > maxStepHeight/10f && stabilityTerrain.SampleHeight(transform.position) < 10f)
         {
             Instantiate(lineTrailHole, transform.position, Quaternion.identity);
@@ -98,6 +98,7 @@ public class TerrainGravity : MonoBehaviour
         redAddition /= 9;
         if (stabilityTerrain.SampleHeight(transform.position) < 10f)
             return Terrain.activeTerrain.SampleHeight(transform.position);
+        Debug.Log(hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition + characterOffset : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition + characterOffset);
         return hasTrail ? Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * (y) * redAddition + characterOffset : Terrain.activeTerrain.SampleHeight(transform.position) + GlobalSnow.GlobalSnowOffset * redAddition + characterOffset;
     }
 }

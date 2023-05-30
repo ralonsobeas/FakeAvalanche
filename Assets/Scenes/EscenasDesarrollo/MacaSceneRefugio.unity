@@ -10983,14 +10983,14 @@ PrefabInstance:
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1199571419}
+      objectReference: {fileID: 1199571425}
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleFlashlight
+      value: toggle
       objectReference: {fileID: 0}
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11006,7 +11006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_Activated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Flashlight, Assembly-CSharp
+      value: FlashlightGame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -2593725309168288373, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -11108,7 +11108,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4361681114481251151, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
   m_PrefabInstance: {fileID: 1199571409}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1199571419
+--- !u!114 &1199571425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11117,12 +11117,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1199571410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e39bcbc612bddc4680b924ebcda2dd9, type: 3}
+  m_Script: {fileID: 11500000, guid: b6cb898ced28f384183047fdce7b2bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightVolume: {fileID: 1294692767}
-  spotlight: {fileID: 1294692768}
-  bulbGlow: {fileID: 1294692767}
+  light: {fileID: 1294692767}
 --- !u!4 &1201083951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8151282481617748229, guid: 16f20b43d8276a5449bb89575e0f351c, type: 3}
@@ -11690,11 +11688,6 @@ CanvasRenderer:
 --- !u!1 &1294692767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4364858977497603267, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
-  m_PrefabInstance: {fileID: 1199571409}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &1294692768 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 4461062633208622783, guid: dfcb3f9e86c52b24bb562163eea1c01f, type: 3}
   m_PrefabInstance: {fileID: 1199571409}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1294851309

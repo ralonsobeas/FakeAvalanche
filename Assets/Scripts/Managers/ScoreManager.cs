@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     private bool victimIsDied;
     private double healthScore = 0;
     private int flagsPlanted = 0;
+    public static double score = 0f;
 
     //private void Awake()
     //{
@@ -47,7 +48,7 @@ public class ScoreManager : MonoBehaviour
 
     private void MissionFinish(int secs)
     {
-        double score = 0;
+        score = 0;
         // difficulty score
         score += GetDifficultyScore();
         // health rest score
@@ -57,6 +58,7 @@ public class ScoreManager : MonoBehaviour
         // victim rescued score
         score += GetVictimScore();
         // TODO: flags score
+        score += GetFlagsScore();
     }
 
     private void DecreaseLife()
